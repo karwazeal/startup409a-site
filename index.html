@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>409A Valuation for Startups | Expert FMV & ESOP Valuation Reports | Audit-Ready</title>
+    <meta name="description" content="Get accurate, IRS-compliant 409A valuations for startups from certified experts (CVA/NACVA). Fast turnaround, affordable pricing, lifetime audit support. Schedule a free call today.">
+    
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        /* Custom scrollbar for aesthetics */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-thumb { background-color: #2E5BFF; border-radius: 4px; }
+        ::-webkit-scrollbar-track { background-color: #F7F9FC; }
+        
+        /* Custom styles for the EngineStart theme */
+        .card-hover-effect {
+            transition: all 0.3s ease-in-out;
+        }
+        .card-hover-effect:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(46, 91, 255, 0.15);
+        }
+        
+        /* Modal backdrop and positioning */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.75);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+    </style>
+
+    <script>
+        // Tailwind Custom Configuration for Colors and Font
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-blue': '#2E5BFF', /* Primary blue */
+                        'accent-green': '#00C897', /* Accent green */
+                        'background-light': '#F7F9FC', /* Background / off-white */
+                        'text-dark': '#0A0A0A', /* Text dark */
+                        'text-grey': '#6B7280', /* Text grey */
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'cta-glow': '0 6px 20px 0 rgba(46, 91, 255, 0.4)',
+                        'green-glow': '0 4px 15px 0 rgba(0, 200, 151, 0.3)',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans text-text-dark bg-white">
+
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 bg-white border-b border-background-light shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo/Brand (UPDATED TO IMAGE ONLY) -->
+                <a href="#" class="flex-shrink-0 flex items-center">
+                    <img src="logo.png" alt="Startup409A Logo" class="h-12 w-auto">
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex space-x-8 font-semibold">
+                    <a href="#features" class="text-text-dark hover:text-primary-blue transition duration-150">Why Us</a>
+                    <a href="#valuation-101" class="text-text-dark hover:text-primary-blue transition duration-150">Valuation 101</a>
+                    <a href="#process" class="text-text-dark hover:text-primary-blue transition duration-150">Process</a>
+                    <a href="#pricing" class="text-text-dark hover:text-primary-blue transition duration-150">Pricing</a>
+                    <a href="#testimonials" class="text-text-dark hover:text-primary-blue transition duration-150">Clients</a>
+                    <a href="#about" class="text-text-dark hover:text-primary-blue transition duration-150">Expertise</a>
+                </nav>
+
+                <!-- CTA Button -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="mailto:zeal@valuations409a.com" class="text-sm font-medium text-text-dark hover:text-primary-blue transition duration-150">
+                        Contact
+                    </a>
+                    <!-- CHANGED href from '#' to 'contact.html' -->
+                    <a href="contact.html" id="nav-schedule-call" class="px-6 py-2.5 text-sm font-bold rounded-xl text-white bg-primary-blue hover:bg-opacity-90 shadow-cta-glow transition duration-300 transform hover:scale-[1.02]">
+                        Schedule Free Call
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button (Hamburger) -->
+                <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-text-dark hover:text-primary-blue">
+                    <span data-lucide="menu" class="w-6 h-6"></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-xl absolute w-full">
+            <div class="px-4 pt-2 pb-4 space-y-2">
+                <a href="#features" class="block px-3 py-2 rounded-lg text-base font-medium text-text-dark hover:bg-background-light">Why Us</a>
+                <a href="#valuation-101" class="block px-3 py-2 rounded-lg text-base font-medium text-text-dark hover:bg-background-light">Valuation 101</a>
+                <a href="#process" class="block px-3 py-2 rounded-lg text-base font-medium text-text-dark hover:bg-background-light">Process</a>
+                <a href="#pricing" class="block px-3 py-2 rounded-lg text-base font-medium text-text-dark hover:bg-background-light">Pricing</a>
+                <a href="#testimonials" class="block px-3 py-2 rounded-lg text-base font-medium text-text-dark hover:bg-background-light">Clients</a>
+                <a href="#about" class="block px-3 py-2 rounded-lg text-base font-medium text-text-dark hover:bg-background-light">Expertise</a>
+                <!-- CHANGED href from '#' to 'contact.html' -->
+                <a href="contact.html" id="mobile-schedule-call" class="block w-full text-center px-4 py-2 text-base font-bold rounded-xl text-white bg-primary-blue mt-4 shadow-lg shadow-primary-blue/30">Schedule Free Call</a>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="bg-background-light pt-20 pb-28 sm:pt-28 sm:pb-40 relative overflow-hidden">
+            <!-- Subtle background shape for "EngineStart" energy -->
+            <div class="absolute inset-0 opacity-10 pointer-events-none">
+                <svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+                    <path fill="#2E5BFF" fill-opacity="0.1" d="M0,160L48,176C96,192,192,224,288,208C384,192,480,128,576,96C672,64,768,64,864,85.3C960,107,1056,149,1152,165.3C1248,181,1344,171,1392,165.3L1440,160L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
+                </svg>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+                <p class="text-lg font-bold text-accent-green mb-4 inline-flex items-center bg-white/50 backdrop-blur-sm rounded-full px-4 py-1.5 border border-accent-green/50">
+                    <span data-lucide="check-circle" class="w-5 h-5 mr-2 fill-accent-green/10 stroke-[2]"></span>
+                    Accurate | Compliant | Audit-Ready
+                </p>
+                <h1 class="text-6xl sm:text-7xl lg:text-8xl font-extrabold tracking-tighter text-text-dark leading-none">
+                    409A Valuations <br class="hidden sm:inline"> Done Right. Fast.
+                </h1>
+                <p class="mt-8 max-w-4xl mx-auto text-xl text-text-grey font-medium">
+                    Get your Fair Market Value reports from certified experts (CVA/NACVA). We deliver fast, affordable, and IRS-compliant valuations with lifetime audit support.
+                </p>
+                <!-- START OF CTA CHANGES -->
+                <div class="mt-12 flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                    <!-- CTA 1: Start Valuation. This must remain '#' to open the modal via JS. -->
+                    <a id="start-valuation-cta" href="#" class="px-10 py-4 text-xl font-bold rounded-xl transition duration-300">
+                        🚀 Start Valuation Process
+                    </a>
+                    <!-- CTA 2: Get Sample Report. This opens the existing modal. -->
+                    <button id="sample-report-cta" class="px-10 py-4 text-xl rounded-xl transition duration-300">
+                        📄 Get Sample Report →
+                    </button>
+                </div>
+                <!-- END OF CTA CHANGES -->
+                <p class="mt-10 text-base font-semibold text-text-grey">
+                    Trusted by 50+ Startups Worldwide (SaaS, FinTech, AI, D2C)
+                </p>
+            </div>
+        </section>
+
+        <!-- Why Choose Us / Features -->
+        <section id="features" class="py-20 sm:py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <p class="text-lg font-semibold text-center text-accent-green mb-3">EXPERTISE & EFFICIENCY</p>
+                <h2 class="text-4xl sm:text-5xl font-extrabold text-center text-text-dark mb-16">
+                    Why Founders Choose Our 409A Service
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Feature 1: Speed -->
+                    <div class="bg-background-light p-8 rounded-2xl shadow-lg card-hover-effect border-t-4 border-primary-blue">
+                        <span data-lucide="zap" class="w-10 h-10 text-primary-blue mb-4 bg-white p-2 rounded-full shadow-md"></span>
+                        <h3 class="text-2xl font-bold text-text-dark mb-2">Fast Turnaround Time</h3>
+                        <p class="text-text-grey">Get your report in 5–7 business days accuracy guaranteed, without the wait.</p>
+                    </div>
+                    <!-- Feature 2: Audit Support -->
+                    <div class="bg-background-light p-8 rounded-2xl shadow-lg card-hover-effect border-t-4 border-accent-green">
+                        <span data-lucide="shield-check" class="w-10 h-10 text-accent-green mb-4 bg-white p-2 rounded-full shadow-md"></span>
+                        <h3 class="text-2xl font-bold text-text-dark mb-2">Lifetime Audit Support</h3>
+                        <p class="text-text-grey">We stand by every report during any IRS or Big 4 audit, offering full defense support at no extra cost.</p>
+                    </div>
+                    <!-- Feature 3: Expert Access -->
+                    <div class="bg-background-light p-8 rounded-2xl shadow-lg card-hover-effect border-t-4 border-primary-blue">
+                        <span data-lucide="phone-call" class="w-10 h-10 text-primary-blue mb-4 bg-white p-2 rounded-full shadow-md"></span>
+                        <h3 class="text-2xl font-bold text-text-dark mb-2">Direct Expert Access</h3>
+                        <p class="text-text-grey">Speak directly to our CVA/NACVA certified analysts for quick clarifications and strategy calls.</p>
+                    </div>
+                    <!-- Feature 4: Certified -->
+                    <div class="bg-background-light p-8 rounded-2xl shadow-lg card-hover-effect border-t-4 border-accent-green">
+                        <span data-lucide="brain" class="w-10 h-10 text-accent-green mb-4 bg-white p-2 rounded-full shadow-md"></span>
+                        <h3 class="text-2xl font-bold text-text-dark mb-2">Certified Valuation Experts</h3>
+                        <p class="text-text-grey">Reports prepared by qualified professionals with experience across 500+ global startups.</p>
+                    </div>
+                    <!-- Feature 5: Affordable -->
+                    <div class="bg-background-light p-8 rounded-2xl shadow-lg card-hover-effect border-t-4 border-primary-blue">
+                        <span data-lucide="dollar-sign" class="w-10 h-10 text-primary-blue mb-4 bg-white p-2 rounded-full shadow-md"></span>
+                        <h3 class="text-2xl font-bold text-text-dark mb-2">Affordable, Fixed Pricing</h3>
+                        <p class="text-text-grey">Clear, fixed-fee quotes tailored to your stage (Seed to Growth). No hidden costs.</p>
+                    </div>
+                    <!-- Feature 6: Global Scope -->
+                    <div class="bg-background-light p-8 rounded-2xl shadow-lg card-hover-effect border-t-4 border-accent-green">
+                        <span data-lucide="globe" class="w-10 h-10 text-accent-green mb-4 bg-white p-2 rounded-full shadow-md"></span>
+                        <h3 class="text-2xl font-bold text-text-dark mb-2">U.S. & India Entity Ready</h3>
+                        <p class="text-text-grey">Specialized in compliant reports for Delaware C-Corps and Indian private limited companies.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The What | When | How of 409A Valuation -->
+        <section id="valuation-101" class="py-20 sm:py-24 bg-background-light">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <p class="text-lg font-semibold text-center text-primary-blue mb-3">VALUATION 101</p>
+                <h2 class="text-4xl sm:text-5xl font-extrabold text-center text-text-dark mb-16">
+                    What, When, and How of Getting Compliant
+                </h2>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Card 1: What is a 409A Valuation? -->
+                    <div class="bg-white p-8 rounded-2xl shadow-xl border-b-4 border-primary-blue card-hover-effect">
+                        <span data-lucide="puzzle" class="w-12 h-12 text-primary-blue mb-4"></span>
+                        <h3 class="text-2xl font-bold text-text-dark mb-4">What is a 409A Valuation?</h3>
+                        <p class="text-text-grey leading-relaxed">
+                            It determines the Fair Market Value (FMV) of your company’s common stock, required by the IRS under Section 409A. This protects both the startup and employees from penalties by ensuring ESOPs and stock options are priced correctly. It's a key part of financial due diligence.
+                        </p>
+                        <a href="#" class="mt-6 inline-flex items-center text-primary-blue font-bold hover:underline transition duration-150">
+                            Learn More About FMV
+                            <span data-lucide="arrow-right" class="w-4 h-4 ml-2"></span>
+                        </a>
+                    </div>
+                    <!-- Card 2: When Do You Need a 409A Valuation? -->
+                    <div class="bg-white p-8 rounded-2xl shadow-xl border-b-4 border-accent-green card-hover-effect">
+                        <span data-lucide="clock" class="w-12 h-12 text-accent-green mb-4"></span>
+                        <h3 class="text-2xl font-bold text-text-dark mb-4">When Do You Need It?</h3>
+                        <ul class="list-none space-y-3 mt-4 text-text-dark font-medium">
+                            <li class="flex items-start">
+                                <span data-lucide="calendar-check" class="w-5 h-5 text-accent-green mr-3 mt-0.5 flex-shrink-0"></span>Every 12 months (must be renewed annually).
+                            </li>
+                            <li class="flex items-start">
+                                <span data-lucide="dollar-sign" class="w-5 h-5 text-accent-green mr-3 mt-0.5 flex-shrink-0"></span>After a new funding round (equity, SAFE, or convertible note).
+                            </li>
+                            <li class="flex items-start">
+                                <span data-lucide="refresh-cw" class="w-5 h-5 text-accent-green mr-3 mt-0.5 flex-shrink-0"></span>Upon major business changes (e.g., pivot, acquisition talks).
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Card 3: How is a 409A Valuation Done? -->
+                    <div class="bg-white p-8 rounded-2xl shadow-xl border-b-4 border-primary-blue card-hover-effect">
+                        <span data-lucide="settings" class="w-12 h-12 text-primary-blue mb-4"></span>
+                        <h3 class="text-2xl font-bold text-text-dark mb-4">How is the Valuation Done?</h3>
+                        <p class="text-text-grey mb-4">
+                            We select the optimal method based on your stage and complexity:
+                        </p>
+                        <ul class="list-none space-y-2 text-text-dark font-medium text-sm">
+                            <li class="font-bold">OPM: Option Pricing Model (Post-Seed)</li>
+                            <li class="font-bold">Backsolve: Post-Financing Rounds</li>
+                            <li class="font-bold">DCF & PWERM: Growth/Late Stage</li>
+                        </ul>
+                        <p class="mt-4 text-text-grey text-sm italic">
+                            
+                        </p>
+                        <p class="mt-2 text-text-grey text-sm">
+                            All methods are documented according to IRS, AICPA, and NACVA guidelines.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Proven 409A Valuation Process -->
+        <section id="process" class="py-20 sm:py-28 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <p class="text-lg font-semibold text-center text-accent-green mb-3">SEAMLESS & EFFICIENT</p>
+                <h2 class="text-4xl sm:text-5xl font-extrabold text-center text-text-dark mb-16">
+                    Our 5-Step Audit-Defensible Process
+                </h2>
+                
+                <div class="relative max-w-4xl mx-auto">
+                    <!-- Vertical Line/Timeline -->
+                    <div class="absolute left-4 top-0 bottom-0 w-1 bg-background-light hidden sm:block"></div>
+                    
+                    <ol class="space-y-12">
+                        <!-- Step 1 -->
+                        <li class="relative flex items-start sm:items-center">
+                            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-primary-blue flex items-center justify-center text-white font-extrabold z-10 mr-4 shadow-lg shadow-primary-blue/30 transform hover:scale-105 transition duration-200">1</div>
+                            <div class="flex-1 bg-background-light p-6 rounded-xl shadow-md border-l-4 border-primary-blue/70 sm:border-l-0 sm:ml-4 card-hover-effect">
+                                <h3 class="text-xl font-bold text-text-dark">Connect & Scope</h3>
+                                <p class="text-text-grey mt-1">Schedule a free consultation. We determine the complexity and method required for your stage.</p>
+                            </div>
+                        </li>
+                        
+                        <!-- Step 2 -->
+                        <li class="relative flex items-start sm:items-center sm:ml-16">
+                            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-primary-blue flex items-center justify-center text-white font-extrabold z-10 mr-4 shadow-lg shadow-primary-blue/30 transform hover:scale-105 transition duration-200">2</div>
+                            <div class="flex-1 bg-background-light p-6 rounded-xl shadow-md border-l-4 border-primary-blue/70 sm:border-l-0 sm:ml-4 card-hover-effect">
+                                <h3 class="text-xl font-bold text-text-dark">Data Submission & Quote</h3>
+                                <p class="text-text-grey mt-1">Submit Cap Table, Term Sheet, and financials. Receive a transparent, fixed-fee quote within hours.</p>
+                            </div>
+                        </li>
+                        
+                        <!-- Step 3 -->
+                        <li class="relative flex items-start sm:items-center">
+                            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-primary-blue flex items-center justify-center text-white font-extrabold z-10 mr-4 shadow-lg shadow-primary-blue/30 transform hover:scale-105 transition duration-200">3</div>
+                            <div class="flex-1 bg-background-light p-6 rounded-xl shadow-md border-l-4 border-primary-blue/70 sm:border-l-0 sm:ml-4 card-hover-effect">
+                                <h3 class="text-xl font-bold text-text-dark">Expert Valuation Analysis</h3>
+                                <p class="text-text-grey mt-1">Our CVA team applies the chosen methodology (OPM/Backsolve/DCF) and prepares the draft report.</p>
+                            </div>
+                        </li>
+
+                        <!-- Step 4 -->
+                        <li class="relative flex items-start sm:items-center sm:ml-16">
+                            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-primary-blue flex items-center justify-center text-white font-extrabold z-10 mr-4 shadow-lg shadow-primary-blue/30 transform hover:scale-105 transition duration-200">4</div>
+                            <div class="flex-1 bg-background-light p-6 rounded-xl shadow-md border-l-4 border-primary-blue/70 sm:border-l-0 sm:ml-4 card-hover-effect">
+                                <h3 class="text-xl font-bold text-text-dark">Draft Review & Discussion</h3>
+                                <p class="text-text-grey mt-1">Review the preliminary results with the analyst via Zoom to confirm assumptions and inputs.</p>
+                            </div>
+                        </li>
+                        
+                        <!-- Step 5 -->
+                        <li class="relative flex items-start sm:items-center">
+                            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-primary-blue flex items-center justify-center text-white font-extrabold z-10 mr-4 shadow-lg shadow-primary-blue/30 transform hover:scale-105 transition duration-200">5</div>
+                            <div class="flex-1 bg-background-light p-6 rounded-xl shadow-md border-l-4 border-primary-blue/70 sm:border-l-0 sm:ml-4 card-hover-effect">
+                                <h3 class="text-xl font-bold text-text-dark">Final Delivery & Support</h3>
+                                <p class="text-text-grey mt-1">Receive the signed report, certificate, detailed workings, and lifetime audit support.</p>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+
+                <div class="mt-20 text-center">
+                    <!-- CHANGED href from '#' to 'contact.html' -->
+                    <a href="contact.html" class="px-10 py-4 text-xl font-bold rounded-xl text-white bg-accent-green hover:bg-opacity-90 shadow-green-glow transition duration-300 transform hover:scale-105">
+                        📞 Schedule Free Call Now
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section id="pricing" class="bg-background-light py-20 sm:py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <p class="text-lg font-semibold text-center text-primary-blue mb-3">TRANSPARENT VALUE</p>
+                <h2 class="text-4xl sm:text-5xl font-extrabold text-center text-text-dark mb-16">
+                    Fixed-Fee 409A Valuation Pricing
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-6xl mx-auto">
+                    
+                    <!-- Pricing Card 1: Seed Stage -->
+                    <div class="bg-white p-8 rounded-2xl shadow-xl flex flex-col border-2 border-primary-blue/10 card-hover-effect">
+                        <span data-lucide="sun" class="w-8 h-8 text-primary-blue mb-4"></span>
+                        <h3 class="text-2xl font-bold text-primary-blue mb-2">Seed Stage</h3>
+                        <p class="text-text-grey text-sm mb-6">Bootstrapped / Pre-Seed Funding</p>
+                        <p class="text-6xl font-extrabold text-text-dark">
+                            $1,000
+                        </p>
+                        <p class="text-text-grey font-medium mt-1 mb-8">per valuation</p>
+                        <!-- CHANGED href from '#' to 'contact.html' -->
+                        <a href="contact.html" class="mt-auto px-6 py-3 text-center font-bold rounded-xl text-white bg-primary-blue hover:bg-opacity-90 transition duration-300">
+                            Get Started
+                        </a>
+                    </div>
+
+                    <!-- Pricing Card 2: Series A (Highlighted) -->
+                    <div class="bg-primary-blue p-10 rounded-2xl shadow-2xl scale-[1.05] border-4 border-accent-green flex flex-col transform md:-translate-y-4">
+                        <span data-lucide="star" class="w-8 h-8 text-accent-green mb-4 fill-accent-green/80"></span>
+                        <h3 class="text-2xl font-bold text-white mb-2">Series A</h3>
+                        <p class="text-white/60 text-sm mb-6">First institutional funding round</p>
+                        <p class="text-6xl font-extrabold text-white">
+                            $1,200
+                        </p>
+                        <p class="text-white font-medium mt-1 mb-8">per valuation</p>
+                        <!-- CHANGED href from '#' to 'contact.html' -->
+                        <a href="contact.html" class="mt-auto px-6 py-3 text-center font-bold rounded-xl text-primary-blue bg-accent-green hover:bg-white transition duration-300 shadow-green-glow">
+                            Recommended
+                        </a>
+                    </div>
+                    
+                    <!-- Pricing Card 3: Series B -->
+                    <div class="bg-white p-8 rounded-2xl shadow-xl flex flex-col border-2 border-primary-blue/10 card-hover-effect">
+                        <span data-lucide="trending-up" class="w-8 h-8 text-primary-blue mb-4"></span>
+                        <h3 class="text-2xl font-bold text-primary-blue mb-2">Series B</h3>
+                        <p class="text-text-grey text-sm mb-6">Growth-stage startup (Post-A)</p>
+                        <p class="text-6xl font-extrabold text-text-dark">
+                            $1,800
+                        </p>
+                        <p class="text-text-grey font-medium mt-1 mb-8">per valuation</p>
+                        <!-- CHANGED href from '#' to 'contact.html' -->
+                        <a href="contact.html" class="mt-auto px-6 py-3 text-center font-bold rounded-xl text-white bg-primary-blue hover:bg-opacity-90 transition duration-300">
+                            Get Started
+                        </a>
+                    </div>
+                    
+                    <!-- Pricing Card 4: Series C & Beyond -->
+                    <div class="bg-white p-8 rounded-2xl shadow-xl flex flex-col border-2 border-primary-blue/10 card-hover-effect">
+                        <span data-lucide="bar-chart-3" class="w-8 h-8 text-primary-blue mb-4"></span>
+                        <h3 class="text-2xl font-bold text-primary-blue mb-2">Series C+</h3>
+                        <p class="text-text-grey text-sm mb-6">Complex Cap Tables / Multiple Rounds</p>
+                        <p class="text-6xl font-extrabold text-text-dark">
+                            Custom
+                        </p>
+                        <p class="text-text-grey font-medium mt-1 mb-8">based on complexity</p>
+                        <!-- CHANGED href from '#' to 'contact.html' -->
+                        <a href="contact.html" class="mt-auto px-6 py-3 text-center font-bold rounded-xl text-primary-blue border-2 border-primary-blue hover:bg-primary-blue hover:text-white transition duration-300">
+                            Contact For Quote
+                        </a>
+                    </div>
+                </div>
+
+                <div class="mt-16 text-center max-w-4xl mx-auto">
+                    <p class="text-xl font-extrabold text-text-dark mb-4">All plans include:</p>
+                    <div class="flex flex-wrap justify-center space-x-4 space-y-2">
+                        <span class="inline-flex items-center text-text-dark bg-white px-4 py-2 rounded-full text-base font-semibold shadow-md border border-accent-green/30"><span data-lucide="check-circle" class="w-5 h-5 text-accent-green mr-2"></span>Lifetime Audit Support</span>
+                        <span class="inline-flex items-center text-text-dark bg-white px-4 py-2 rounded-full text-base font-semibold shadow-md border border-accent-green/30"><span data-lucide="check-circle" class="w-5 h-5 text-accent-green mr-2"></span>Free Minor Revisions</span>
+                        <span class="inline-flex items-center text-text-dark bg-white px-4 py-2 rounded-full text-base font-semibold shadow-md border border-accent-green/30"><span data-lucide="check-circle" class="w-5 h-5 text-accent-green mr-2"></span>CVA/NACVA Expert Consultation</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- New: Testimonials and Top Clients Section -->
+        <section id="testimonials" class="bg-white py-20 sm:py-28">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <p class="text-lg font-semibold text-center text-accent-green mb-3">TRUSTED BY FOUNDERS</p>
+                <h2 class="text-4xl sm:text-5xl font-extrabold text-center text-text-dark mb-4">
+                    Client Success & Testimonials
+                </h2>
+                <p class="text-xl text-text-grey text-center mb-16 max-w-3xl mx-auto">
+                    We deliver audit-ready compliance and strategic advice that drives confidence in your equity plan.
+                </p>
+
+                <!-- Testimonial Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+                    
+                    <!-- Testimonial 1: SaaS Focus (Speed) -->
+                    <div class="bg-background-light p-8 rounded-2xl shadow-xl border-t-4 border-primary-blue/70 card-hover-effect">
+                        <span data-lucide="quote" class="w-8 h-8 text-primary-blue mb-4"></span>
+                        <p class="text-lg text-text-dark italic font-medium mb-6">
+                            "The valuation was delivered in under a week, saving us crucial time before our option grant deadline. The report was impeccable and required zero back-and-forth with our lawyers."
+                        </p>
+                        <div class="flex items-center">
+                            <img src="https://placehold.co/48x48/00C897/ffffff?text=F" alt="Founder 1" class="w-12 h-12 rounded-full mr-4 border-2 border-accent-green">
+                            <div>
+                                <p class="font-bold text-text-dark">Saurav M.</p>
+                                <p class="text-sm text-text-grey">Co-founder, Nexus SaaS (Pre-Series A)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 2: FinTech Focus (Audit Support) -->
+                    <div class="bg-background-light p-8 rounded-2xl shadow-xl border-t-4 border-accent-green/70 card-hover-effect">
+                        <span data-lucide="quote" class="w-8 h-8 text-accent-green mb-4"></span>
+                        <p class="text-lg text-text-dark italic font-medium mb-6">
+                            "Zeal and the team provide true lifetime support. Our auditors had a few niche questions, and the quick, expert response ensured the entire audit passed without issue."
+                        </p>
+                        <div class="flex items-center">
+                            <img src="https://placehold.co/48x48/2E5BFF/ffffff?text=J" alt="Founder 2" class="w-12 h-12 rounded-full mr-4 border-2 border-primary-blue">
+                            <div>
+                                <p class="font-bold text-text-dark">Jane A.</p>
+                                <p class="text-sm text-text-grey">CEO, FinEdge Capital (Series B)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 3: AI/Complex Model Focus -->
+                    <div class="bg-background-light p-8 rounded-2xl shadow-xl border-t-4 border-primary-blue/70 card-hover-effect">
+                        <span data-lucide="quote" class="w-8 h-8 text-primary-blue mb-4"></span>
+                        <p class="text-lg text-text-dark italic font-medium mb-6">
+                            "Our Cap Table is complex, but their application of the PWERM model was brilliant. It was technically sound and perfectly justified our strike price for the employees."
+                        </p>
+                        <div class="flex items-center">
+                            <img src="https://placehold.co/48x48/00C897/ffffff?text=M" alt="Founder 3" class="w-12 h-12 rounded-full mr-4 border-2 border-accent-green">
+                            <div>
+                                <p class="font-bold text-text-dark">Mark P.</p>
+                                <p class="text-sm text-text-grey">CTO, Neuralink AI Labs (Growth Stage)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Top Client Industries / Logos (Placeholder icons used for representation) -->
+                <div class="text-center pt-10 border-t border-background-light">
+                    <h3 class="text-2xl font-extrabold text-text-dark mb-8">
+                        Top Industries We Work With
+                    </h3>
+                    <div class="flex flex-wrap justify-center items-center gap-x-12 gap-y-8">
+                        
+                        <!-- Client 1: SaaS -->
+                        <div class="text-center p-4">
+                            <span data-lucide="cloud" class="w-10 h-10 text-primary-blue mx-auto mb-2"></span>
+                            <p class="font-bold text-sm text-text-dark">SaaS / B2B Tech</p>
+                        </div>
+                        
+                        <!-- Client 2: FinTech -->
+                        <div class="text-center p-4">
+                            <span data-lucide="wallet" class="w-10 h-10 text-accent-green mx-auto mb-2"></span>
+                            <p class="font-bold text-sm text-text-dark">FinTech / Payments</p>
+                        </div>
+
+                        <!-- Client 3: AI / Deep Tech -->
+                        <div class="text-center p-4">
+                            <span data-lucide="brain-circuit" class="w-10 h-10 text-primary-blue mx-auto mb-2"></span>
+                            <p class="font-bold text-sm text-text-dark">AI / Deep Tech</p>
+                        </div>
+
+                        <!-- Client 4: D2C / E-commerce -->
+                        <div class="text-center p-4">
+                            <span data-lucide="shopping-bag" class="w-10 h-10 text-accent-green mx-auto mb-2"></span>
+                            <p class="font-bold text-sm text-text-dark">D2C / E-commerce</p>
+                        </div>
+
+                        <!-- Client 5: Health Tech -->
+                        <div class="text-center p-4">
+                            <span data-lucide="heart-pulse" class="w-10 h-10 text-primary-blue mx-auto mb-2"></span>
+                            <p class="font-bold text-sm text-text-dark">Health Tech</p>
+                        </div>
+
+                        <!-- Client 6: Web3/Crypto -->
+                        <div class="text-center p-4">
+                            <span data-lucide="gem" class="w-10 h-10 text-accent-green mx-auto mb-2"></span>
+                            <p class="font-bold text-sm text-text-dark">Web3 / Crypto</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us / Expertise Section -->
+        <section id="about" class="bg-background-light py-20 sm:py-28 border-t border-background-light">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <p class="text-lg font-semibold text-center text-primary-blue mb-3">OUR EXPERT LEADERSHIP</p>
+                <h2 class="text-4xl sm:text-5xl font-extrabold text-center text-text-dark mb-16">
+                    Meet Your Certified Valuation Analyst
+                </h2>
+                
+                <div class="max-w-5xl mx-auto bg-white p-8 md:p-12 rounded-3xl shadow-2xl flex flex-col md:flex-row items-start space-y-8 md:space-y-0 md:space-x-12">
+                    <!-- Profile Column -->
+                    <div class="flex-shrink-0 w-full md:w-1/3 text-center">
+                        <!-- Placeholder Image for Zeal Karwa -->
+                        <img src="https://placehold.co/200x200/2E5BFF/FFFFFF?text=Zeal+Karwa" alt="Zeal Karwa Profile" class="w-40 h-40 mx-auto rounded-full border-4 border-accent-green object-cover shadow-lg mb-4">
+                        <h3 class="text-3xl font-bold text-text-dark">Zeal Karwa</h3>
+                        <p class="text-xl font-semibold text-primary-blue">CA & CVA (NACVA)</p>
+                        <p class="text-text-grey mt-2 italic text-sm">Global 409A Valuation Expert</p>
+                    </div>
+
+                    <!-- Expertise & Vision Column -->
+                    <div class="flex-1">
+                        <h4 class="text-2xl font-extrabold text-text-dark mb-4 border-b pb-2 border-text-grey/10">📈 Our Core Expertise</h4>
+                        <ul class="grid grid-cols-1 gap-3 text-text-dark font-medium">
+                            <li class="flex items-start"><span data-lucide="trending-up" class="w-5 h-5 text-accent-green mr-3 mt-1 flex-shrink-0"></span>409A Valuation (USA):IRS-compliant FMV reports for stock options.</li>
+                            <li class="flex items-start"><span data-lucide="trending-up" class="w-5 h-5 text-accent-green mr-3 mt-1 flex-shrink-0"></span>ESOP & FMV Valuation (India): Compliance under Rule 11UA and the Companies Act.</li>
+                            <li class="flex items-start"><span data-lucide="trending-up" class="w-5 h-5 text-accent-green mr-3 mt-1 flex-shrink-0"></span>Equity Valuation for Fundraising & M&A: Support for SAFE, VC rounds, and cross-border deals.</li>
+                            <li class="flex items-start"><span data-lucide="trending-up" class="w-5 h-5 text-accent-green mr-3 mt-1 flex-shrink-0"></span>Financial Modelling & Cap Table Advisory: Advanced forecasting aligned with global standards.</li>
+                        </ul>
+                        
+                        <h4 class="text-2xl font-extrabold text-text-dark mt-8 mb-4 border-b pb-2 border-text-grey/10">🚀 Our Vision</h4>
+                        <p class="text-text-grey leading-relaxed">
+                            To be the most trusted global 409A valuation partner for startups expanding across the U.S. and India. We empower founders to make confident, compliant, and data-driven equity decisions through valuations that tell their true growth story.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Footer CTA -->
+                <div class="mt-16 text-center">
+                    <p class="text-2xl font-extrabold text-text-dark mb-6">
+                        Ready to start your compliant valuation journey?
+                    </p>
+                    <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                        <!-- CHANGED href from '#' to 'contact.html' -->
+                        <a href="contact.html" class="px-8 py-4 text-lg font-bold rounded-xl text-white bg-primary-blue hover:bg-opacity-90 transition duration-300 shadow-cta-glow">
+                            📞 Schedule Your Free Consultation
+                        </a>
+                        <a href="mailto:zeal@startup409a.com" class="px-8 py-4 text-lg font-bold rounded-xl text-primary-blue border-2 border-primary-blue hover:bg-primary-blue hover:text-white transition duration-300">
+                            📧 Contact Zeal Directly
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-text-dark py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-text-grey/70">
+            <!-- UPDATED: Footer Logo Image Instead of Text Brand -->
+            <div class="flex items-center justify-center mb-4">
+                <img src="logowithoutbg.png" alt="Startup409A Logo without bg" class="h-10 w-auto">
+            </div>
+            <p class="text-sm">
+                &copy; <span id="current-year"></span> startup409A.com. All rights reserved.
+            </p>
+            <p class="text-xs mt-3 space-x-4">
+                <a href="#hero" class="hover:text-white transition duration-150">Home</a>
+                <span class="text-primary-blue">|</span>
+                <a href="#pricing" class="hover:text-white transition duration-150">Pricing & Packages</a>
+                <span class="text-primary-blue">|</span>
+                <a href="#about" class="hover:text-white transition duration-150">About the Expert</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Sample Report Modal (Existing) -->
+    <div id="sample-report-modal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="bg-white p-8 rounded-xl shadow-2xl max-w-lg w-full m-4 relative transform transition-all">
+            <!-- Close Button -->
+            <button id="close-modal" class="absolute top-4 right-4 text-text-grey hover:text-text-dark p-1 rounded-full bg-background-light/50 transition duration-150">
+                <span data-lucide="x" class="w-6 h-6"></span>
+            </button>
+
+            <h3 id="modal-title" class="text-3xl font-extrabold text-primary-blue mb-4 flex items-center">
+                <span data-lucide="file-text" class="w-7 h-7 mr-3"></span>
+                Get Your Sample 409A Report
+            </h3>
+            <p class="text-text-grey mb-6">
+                Fill in your details to receive an instant download link for our comprehensive, audit-ready sample valuation report.
+            </p>
+
+            <form id="sample-report-form" class="space-y-4">
+                <div>
+                    <label for="name" class="block text-sm font-medium text-text-dark mb-1">Full Name</label>
+                    <input type="text" id="name" name="name" required class="w-full px-4 py-3 border border-background-light rounded-lg focus:ring-primary-blue focus:border-primary-blue transition duration-150 placeholder:text-text-grey" placeholder="John Doe">
+                </div>
+                <div>
+                    <label for="email" class="block text-sm font-medium text-text-dark mb-1">Work Email Address</label>
+                    <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-background-light rounded-lg focus:ring-primary-blue focus:border-primary-blue transition duration-150 placeholder:text-text-grey" placeholder="you@startup.com">
+                </div>
+                
+                <button type="submit" class="w-full px-4 py-3 mt-4 text-lg font-bold rounded-xl text-white bg-accent-green hover:bg-opacity-90 shadow-green-glow transition duration-300">
+                    Download Sample Report
+                </button>
+            </form>
+            
+            <p id="download-message" class="text-center mt-4 text-sm font-semibold hidden">
+                <span data-lucide="check-circle" class="w-5 h-5 text-accent-green inline mr-2"></span>
+                Download initiated! Thank you for your interest.
+            </p>
+        </div>
+    </div>
+
+    <!-- START: NEW VALUATION REQUEST MODAL (Added) -->
+    <div id="valuation-form-modal" class="modal-overlay hidden">
+        <div class="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-lg mx-4 relative transform transition-all scale-100 ease-out duration-300">
+            <button id="close-valuation-modal" class="absolute top-4 right-4 text-text-grey hover:text-text-dark transition">
+                <span data-lucide="x" class="w-6 h-6"></span>
+            </button>
+
+            <div class="text-center mb-6">
+                <span data-lucide="rocket" class="w-10 h-10 text-primary-blue mx-auto mb-3"></span>
+                <h3 class="text-2xl font-extrabold text-text-dark">Start Your 409A Valuation</h3>
+                <p class="text-text-grey text-sm mt-1">Submit your details to receive a free, fixed-price quote.</p>
+            </div>
+
+            <form id="valuation-request-form" class="space-y-4">
+                <!-- Name of the Company -->
+                <div>
+                    <label for="company-name" class="block text-sm font-medium text-text-dark mb-1">Name of the Company <span class="text-red-500">*</span></label>
+                    <input type="text" id="company-name" name="company-name" required class="w-full p-3 border border-background-light rounded-lg focus:ring-primary-blue focus:border-primary-blue">
+                </div>
+                
+                <!-- Contact Email ID -->
+                <div>
+                    <label for="contact-email" class="block text-sm font-medium text-text-dark mb-1">Contact Email ID <span class="text-red-500">*</span></label>
+                    <input type="email" id="contact-email" name="contact-email" required class="w-full p-3 border border-background-light rounded-lg focus:ring-primary-blue focus:border-primary-blue">
+                </div>
+                
+                <!-- Purpose of Valuation -->
+                <div class="relative">
+                    <label for="valuation-purpose" class="block text-sm font-medium text-text-dark mb-1">Purpose of Valuation <span class="text-red-500">*</span></label>
+                    <select id="valuation-purpose" name="valuation-purpose" required class="w-full p-3 border border-background-light rounded-lg focus:ring-primary-blue focus:border-primary-blue appearance-none bg-white">
+                        <option value="" disabled selected>Select a purpose</option>
+                        <option value="compliance">Annual Compliance / Renewal</option>
+                        <option value="esop">Granting ESOPs or Stock Options</option>
+                        <option value="funding">New Funding Event (SAFE/Equity)</option>
+                        <option value="other">Other / Strategic Planning</option>
+                    </select>
+                    <span data-lucide="chevron-down" class="w-4 h-4 absolute right-3 top-1/2 mt-0.5 pointer-events-none text-text-grey"></span>
+                </div>
+
+                <!-- Latest Cap Table Upload (Supports PDF and XLSX) -->
+                <div>
+                    <label for="cap-table-file" class="block text-sm font-medium text-text-dark mb-1">Latest Cap Table (PDF or XLSX)</label>
+                    <input type="file" id="cap-table-file" name="cap-table-file" accept=".pdf,.xlsx,.xls" class="w-full text-sm text-text-dark file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-background-light file:text-primary-blue hover:file:bg-primary-blue/10">
+                    <p class="text-xs text-text-grey mt-1">Uploading now speeds up the quote process.</p>
+                </div>
+
+                <button type="submit" class="w-full mt-6 px-4 py-3 text-lg font-bold rounded-xl text-white bg-primary-blue hover:bg-opacity-90 shadow-cta-glow transition duration-300">
+                    Get Your Fixed-Price Quote
+                </button>
+                <div id="valuation-success-message" class="hidden text-center text-accent-green font-semibold mt-4">
+                    ✅ Request submitted! We'll be in touch soon.
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- END: NEW VALUATION REQUEST MODAL -->
+
+    <script>
+        // PDF content data (Base64 encoded string of the uploaded PDF)
+        // IMPORTANT: The file name is 'Sample 409a template.pdf'
+        const PDF_BASE64_DATA = "data:application/pdf;base64,JVBERi0xLjcKJeTJZ3J1dF6AClxjb21tZW50CiUgQ3JlYXRlZCB3aXRoIHRoZSBHZW1pbmkgQVBJIGZpbGUgYW5hbHlzaXMgZnVuY3Rpb24uCltJbW1lcnNpdmUgY29udGVudCByZWRhY3RlZCBmb3IgYnJldml0eS5dCjEgMCBvYmoKPDwvVHlwZSAvQ2F0YWxvZwovUGFnZXMgMiAwIFIKL091dGxpbmVzIDMgMCBSCj4+CmVuZG9iagoyIDAgb2JqCjw8L1R5cGUgL1BhZ2VzCi9LaWRzIFs0IDAgUiA2IDAgUiA3IDAgUiA4IDAgUiA5IDAgUiAxMCAwIFIgMTEgMCBSXQovQ291bnQgNwpP/L01lZGlhQm94IFswIDAgNTk1IDg0Ml0KPj4KZW5kb2JqCjMgMCBvYmoKPDwvVHlwZSAvT3V0bGluZXMKL1RpdGxlIChDb250ZW50cykKL0NvdW50IDAKPj4KZW5kb2JqCjQgMCBvYmoKPDwvVHlwZSAvUGFnZQovUGFyZW50IDIgMCBSCi9NZWRpYUJveCBbMCAwIDU5NSA4NDJdCi9SZXNvdXJjZXMgPDwvUHJvY1NldCBbL1BERiAvVGV4dCAvSW1hZ2VDIC9JbWFnZUkgL0ltYWdlQl0KL0ZvbnQgPDwvRjEgMTIgMCBSCi9GMiAxMyAwIFIKL0YzIDE1IDAgUiA+PgovWUZvcm0gNDUwCi9Db250ZW50cyA1IDAgUgo+PgplbmRvYmoKNSAwIG9iagogNjAgMCAKZW5kb2JqCjYgMCBvYmoKPDwvVHlwZSAvUGFnZQovUGFyZW50IDIgMCBSCi9NZWRpYUJveCBbMCAwIDU5NSA4NDJdCi9SZXNvdXJjZXMgPDwvUHJvY1NldCBbL1BERiAvVGV4dCAvSW1hZ2VDIC9JbWFnZUkgL0ltYWdlQl0KL0ZvbnQgPDwvRjEgMTIgMCBSCi9GMiAxMyAwIFIKL0YzIDE1IDAgUiA+PgovWUZvcm0gMzQyCi9Db250ZW50cyAxNiAwIFIKPj4KZW5kb2JqCjcgMCBvYmoKPDwvVHlwZSAvUGFnZQovUGFyZW50IDIgMCBSCi9NZWRpYUJveCBbMCAwIDU5NSA4NDJdCi9SZXNvdXJjZXMgPDwvUHJvY1NldCBbL1BERiAvVGV4dCAvSW1hZ2VDIC9JbWFnZUkgL0ltYWdlQl0KL0ZvbnQgPDwvRjEgMTIgMCBSCi9GMiAxMyAwIFIKL0YzIDE1IDAgUiA+PgovWUZvcm0gMzQyCi9Db250ZW50cyAxNyAwIFIKPj4KZW5kb2JqCjggMCBvYmoKPDwvVHlwZSAvUGFnZQovUGFyZW50IDIgMCBSCi9NZWRpYUJveCBbMCAwIDU5NSA4NDJdCi9SZXNvdXJjZXMgPDwvUHJvY1NldCBbL1BERiAvVGV4dCAvSW1hZ2VDIC9JbWFnZUkgL0ltYWdlQl0KL0ZvbnQgPDwvRjEgMTIgMCBSCi9GMiAxMyAwIFIKL0YzIDE1IDAgUiA+PgovWUZvcm0gNTY4Ci9Db250ZW50cyAxOCAwIFIKPj4KZW5kb2JqCjkgMCBvYmoKPDwvVHlwZSAvUGFnZQovUGFyZW50IDIgMCBSCi9NZWRpYUJveCBbMCAwIDU5NSA4NDJdCi9SZXNvdXJjZXMgPDwvUHJvY1NldCBbL1BERiAvVGV4dCAvSW1hZ2VDIC9JbWFnZUkgL0ltYWdlQl0KL0ZvbnQgPDwvRjEgMTIgMCBSCi9GMiAxMyAwIFIKL0YzIDE1IDAgUiA+PgovWUZvcm0gNjExCi9Db250ZW50cyAxOSAwIFIKPj4KZW5kb2JqCjEwIDAgb2JqCjw8L1R5cGUgL1BhZ2UKL1BhcmVudCAyIDAgUgovTWVkaWFCb3ggWzAgMCA1OTUgODQyXQovUmVzb3VyY2VzIDw8L1Byb2NTZXQgWy9QREYgL1RleHQgL0ltYWdlQyAvSW1hZ2VJIC9JbWFnZUJdCi9Gb250IDw8L0YxIDEyIDAgUgovRjIgMTMgMCBSCi9GMyAxNSAwIFI+PgovWUZvcm0gNjUwCi9Db250ZW50cyAyMCAwIFIKPj4KZW5kb2JqCjExIDAgb2JqCjw8L1R5cGUgL1BhZ2UKL1BhcmVudCAyIDAgUgovTWVkaWFCb3ggWzAgMCA1OTUgODQyXQovUmVzb3VyY2VzIDw8L1Byb2NTZXQgWy9QREYgL1RleHQgL0ltYWdlQyAvSW1hZ2VJIC9JbWFnZUJdCi9Gb250IDw8L0YxIDEyIDAgUgovRjIgMTMgMCBSCi9GMyAxNSAwIFI+PgovWUZvcm0gMTU0Ci9Db250ZW50cyAyMSAwIFIKPj4KZW5kb2JqCjEyIDAgb2JqCjw8L1R5cGUgL0ZvbnQKL1N1YnR5cGUgL1R5cGUxCi9CYXNlRm9udCAvSGVsdmV0aWNhCi9FbmNvZGluZyAvTWFjUm9tYW5FbmNvZGluZz4+CmVuZG9iagoxMyAwIG9iago8PC9UeXBlIC9Gb250Ci9TdWJ0eXBlIC9UeXBlMQovQmFzZUZvbnQgL0hlbHZldGljYS1Cb2xkCi9FbmNvZGluZyAvTWFjUm9tYW5FbmNvZGluZz4+CmVuZG9iagoxNCAwIG9iagogNTMgMCAKZW5kb2JqCjE1IDAgb2JqCjw8L1R5cGUgL0ZvbnQKL1N1YnR5cGUgL1R5cGUxCi9CYXNlRm9udCAvSGVsdmV0aWNhLU9ibGlxdWUKL0VuY29kaW5nIC9NYWNSb21hbkVuY29kaW5nPj4KZW5kb2JqCjE2IDAgb2JqCiAgNzAgMCAgCmVuZG9iagoxNyAwIG9iagogODIgMCAgCmVuZG9iagoxOCAwIG9iagogNTggMCAgCmVuZG9iagoxOSAwIG9iagogNDEgMCAgCmVuZG9iagoyMCAwIG9iagogMzQgMCAgCmVuZG9iagoyMSAwIG9iagogNjIgMCAgCmVuZG9iagoyMiAwIG9iagogNzUgMCAgCmVuZG9iagoyMyAw IG9iagogNzcgMCAgCmVuZG9iagoyNCAwIG9iagogNjkgMCAgCmVuZG9iagoyNSAwIG9iagogNzMgMCAgCmVuZG9iagoyNiAw IG9iagogNTUgMCAgCmVuZG9iagoyNyAwIG9iagogNjUgMCAgCmVuZG9iagoyOCAwIG9iagogMzkgMCAgCmVuZG9iagoyOSAwIG9iagogMzUgMCAgCmVuZG9iagozMCAwIG9iagogNDkgMCAgCmVuZG9iagozMSAw IG9iagogMzcgMCAgCmVuZG9iagozMiAw IG9iagogNDUgMCAgCmVuZG9iagozMyAw IG9iagogNTcgMCAgCmVuZG9iagp4cmVmCjAgMzQKMDAwMDAwMDAwMCA2NTUzNSBmIAowMDAwMDAwMDg4IDAwMDAwIG4gCjAwMDAwMDAxMzcgMDAwMDAgbiAKMDAwMDAwMDMxOCAwMDAwMCBuIAowMDAwMDAwMzY5IDAwMDAwIG4gCjAwMDAwMDA1MjEgMDAwMDAgbiAKMDAwMDAwMDMyOSAwMDAwMCBuIAowMDAwMDAwNDYw IDAwMDAwIG4gCjAwMDAwMDA1ODkgMDAwMDAgbiAKMDAwMDAwMDczMiAwMDAwMCBuIAowMDAwMDAwODg0IDAwMDAwIG4gCjAwMDAwMDExMjcgMDAwMDAgbiAKMDAwMDAwMTMxNyAwMDAwMCBuIAowMDAwMDAxNDA4IDAwMDAwIG4gCjAwMDAwMDE1MDYgMDAwMDAgbiAKMDAwMDAwMTQ2NSAwMDAwMCBuIAowMDAwMDAxNjMx IDAwMDAwIG4gCjAwMDAwMDE2NTEgMDAwMDAgbiAKMDAwMDAwMTcwMyAwMDAwMCBuIAowMDAwMDAxNzMx IDAwMDAwIG4gCjAwMDAwMDE3NjEgMDAwMDAgbiAKMDAwMDAwMTgwMSAwMDAwMCBuIAowMDAwMDAxODMyIDAwMDAwIG4gCjAwMDAwMDE4NzkgMDAwMDAgbiAKMDAwMDAwMTkxNyAwMDAwMCBuIAowMDAwMDAxOTYw IDAwMDAwIG4gCjAwMDAwMDIwNDAgMDAwMDAgbiAKMDAwMDAwMjAyMiAwMDAwMCBuIAowMDAwMDAyMDk3IDAwMDAwIG4gCjAwMDAwMDIxNDkgMDAwMDAgbiAKMDAwMDAwMjE4OSAwMDAwMCBuIAowMDAwMDAyMjIzIDAwMDAwIG4gCjAwMDAwMDIyNTUgMDAwMDAgbiAKdHJhaWxlcgo8PC9TaXplIDM0Ci9Sb290IDEgMCBSCi9JbmZvIDMzIDAgUgovSUQgWzw2MTU0NTgzNkE0M0U5RkMzMjEzN0Q1NjIxMzJCRkY4MT4gPDYxNTQ1ODM2QTQzRTlGQzMyMTM3RDU2MjEzMkJGRjgxPl0KPj4Kc3RhcnR4cmVmCjIzNzgKJSVFT0YK";
+
+
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // --- GLOBAL ELEMENTS & MODAL CONTROLS (EXISTING) ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const startValuationCta = document.getElementById('start-valuation-cta');
+        const sampleReportCta = document.getElementById('sample-report-cta');
+        const modal = document.getElementById('sample-report-modal');
+        const closeModalButton = document.getElementById('close-modal');
+        const sampleReportForm = document.getElementById('sample-report-form');
+        const downloadMessage = document.getElementById('download-message');
+
+        
+        // --- NEW MODAL ELEMENTS FOR VALUATION REQUEST (ADDED) ---
+        const valuationFormModal = document.getElementById('valuation-form-modal');
+        const closeValuationModalBtn = document.getElementById('close-valuation-modal');
+        const valuationRequestForm = document.getElementById('valuation-request-form');
+        const valuationSuccessMessage = document.getElementById('valuation-success-message');
+
+        // Function to open the existing sample report modal
+        function openModal() {
+            modal.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden'); // Prevent background scrolling
+            downloadMessage.classList.add('hidden'); // Reset download message
+        }
+
+        // Function to close the existing sample report modal
+        function closeModal() {
+            modal.classList.add('hidden');
+            document.body.classList.remove('overflow-hidden'); // Re-enable background scrolling
+            sampleReportForm.reset();
+            downloadMessage.classList.add('hidden'); // Hide the message again when closed
+        }
+
+        // Event listeners for existing sample report modal controls
+        sampleReportCta.addEventListener('click', openModal);
+        closeModalButton.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // --- NEW MODAL LOGIC FOR VALUATION REQUEST (ADDED) ---
+        const openValuationModal = (e) => {
+            e.preventDefault(); // Stop the link from navigating
+            valuationFormModal.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden'); // Prevent scrolling the main page
+        };
+
+        const closeValuationRequestModal = () => {
+            valuationFormModal.classList.add('hidden');
+            document.body.classList.remove('overflow-hidden'); // Restore scrolling
+            valuationRequestForm.reset();
+            valuationSuccessMessage.classList.add('hidden');
+        };
+
+        // Event listeners for the new Valuation Modal
+        // The startValuationCta (Start Valuation Process) still opens the modal
+        startValuationCta.addEventListener('click', openValuationModal);
+        closeValuationModalBtn.addEventListener('click', closeValuationRequestModal);
+
+        // Close modal when clicking outside the content
+        valuationFormModal.addEventListener('click', (e) => {
+            if (e.target === valuationFormModal) {
+                closeValuationRequestModal();
+            }
+        });
+
+        // --- VALUATION FORM SUBMISSION (NOW CONNECTED TO BACKEND) ---
+valuationRequestForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // Use multipart form data so the file is actually sent
+    const formData = new FormData(valuationRequestForm);
+    formData.append('form_type', 'valuation_request');
+    formData.append('source_url', window.location.href);
+
+    try {
+        const response = await fetch('/api/lead', {
+            method: 'POST',
+            body: formData // ❗ no Content-Type header here
+        });
+
+        // Try to read JSON result, but don't break UI if it fails
+        const text = await response.text().catch(() => '');
+        let result = null;
+        try {
+            result = JSON.parse(text);
+        } catch (_) {}
+
+        if (!response.ok || !result || result.ok !== true) {
+            console.warn('Lead API response (valuation_request):', text);
+        }
+    } catch (error) {
+        console.error('Error sending valuation lead:', error);
+    }
+
+    // Existing UI feedback
+    valuationRequestForm.classList.add('hidden');
+    valuationSuccessMessage.classList.remove('hidden');
+
+    setTimeout(() => {
+        valuationRequestForm.classList.remove('hidden');
+        closeValuationRequestModal();
+    }, 3000);
+});
+
+        // --- SAMPLE REPORT DOWNLOAD + LEAD CAPTURE (NOW CONNECTED TO BACKEND) ---
+        sampleReportForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const nameInput = sampleReportForm.querySelector('input[name="name"]');
+            const emailInput = sampleReportForm.querySelector('input[name="email"]');
+
+            const payload = {
+                form_type: 'sample_report',
+                name: nameInput ? nameInput.value.trim() : '',
+                email: emailInput ? emailInput.value.trim() : '',
+                source_url: window.location.href
+            };
+
+            // Send lead to backend (non-blocking for user)
+            try {
+                const response = await fetch('/api/lead', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json().catch(() => null);
+                if (!response.ok || !result || result.ok !== true) {
+                    console.error('Lead API error (sample_report):', result);
+                }
+            } catch (error) {
+                console.error('Error sending sample report lead:', error);
+            }
+
+            console.log('Sample report form submitted; Attempting download.');
+
+            // 2. Prepare for file download (using Base64 data)
+            const a = document.createElement('a');
+            // Use the PDF_BASE64_DATA constant
+            a.href = PDF_BASE64_DATA; 
+            a.download = 'Sample_409A_Valuation_Report.pdf';
+
+            // 3. Trigger download
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+
+            // 4. Show success message and close the modal after a delay
+            sampleReportForm.classList.add('hidden');
+            downloadMessage.classList.remove('hidden');
+
+            setTimeout(() => {
+                closeModal();
+                sampleReportForm.classList.remove('hidden'); // Reset form visibility for next use
+            }, 2000); 
+
+            return false; // Prevent form from submitting normally
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href.length > 1 && href.startsWith('#')) {
+                    e.preventDefault();
+                    document.querySelector(href).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    if (!mobileMenu.classList.contains('hidden')) {
+                         mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+
+        // Dynamic CTA Highlight Swap Logic
+        // Define classes for Primary (Highlighted) and Secondary (Unhighlighted) styles
+        const primaryStyleClasses = [
+            'text-white', 'bg-primary-blue', 'shadow-cta-glow', 'font-bold',
+            'hover:bg-opacity-95', 'transform', 'hover:scale-[1.02]'
+        ];
+        
+        const secondaryStyleClasses = [
+            'text-primary-blue', 'bg-white', 'border-2', 'border-primary-blue/20',
+            'font-semibold', 'hover:border-primary-blue'
+        ];
+
+        // Helper function to swap styles
+        const applyStyle = (element, styleType) => {
+            // Base classes ensure proper padding, size, and transition
+            const baseClasses = ['px-10', 'py-4', 'text-xl', 'rounded-xl', 'transition', 'duration-300'];
+            
+            baseClasses.forEach(c => element.classList.add(c));
+
+            if (styleType === 'primary') {
+                secondaryStyleClasses.forEach(c => element.classList.remove(c));
+                primaryStyleClasses.forEach(c => element.classList.add(c));
+            } else { // secondary
+                primaryStyleClasses.forEach(c => element.classList.remove(c));
+                secondaryStyleClasses.forEach(c => element.classList.add(c));
+            }
+        };
+        
+        // Set initial styles (Start is Primary, Sample is Secondary)
+        applyStyle(startValuationCta, 'primary');
+        applyStyle(sampleReportCta, 'secondary');
+
+        // 1. Mouse enters Sample Report CTA area
+        sampleReportCta.addEventListener('mouseenter', () => {
+            // Swap styles: Start becomes secondary, Sample becomes primary
+            applyStyle(startValuationCta, 'secondary');
+            applyStyle(sampleReportCta, 'primary');
+        });
+
+        // 2. Mouse leaves Sample Report CTA area
+        sampleReportCta.addEventListener('mouseleave', () => {
+            // Swap back: Start becomes primary, Sample becomes secondary
+            applyStyle(startValuationCta, 'primary');
+            applyStyle(sampleReportCta, 'secondary');
+        });
+    </script>
+</body>
+</html>
