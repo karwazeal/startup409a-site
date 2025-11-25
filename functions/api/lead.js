@@ -1,12 +1,13 @@
 // functions/api/lead.js
 
 // 1) Webhook for your Google Sheet / CRM (Make.com / Zapier)
-const WEBHOOK_URL = "https://hook.us2.make.com/tdx7es2m32nuyblj5hsdk8entd9laoge";
+const WEBHOOK_URL =
+  "https://hook.us2.make.com/tdx7es2m32nuyblj5hsdk8entd9laoge";
 
 // 2) Base URL where your R2 files are publicly visible
 // Example: "https://pub-xxxxxx.r2.dev/startup409a-files"
-const FILE_BASE_URL = "https://pub-4fc511a90a3d415cbf9dd56bf85f50bf.r2.dev";
-
+const FILE_BASE_URL =
+  "https://pub-4fc511a90a3d415cbf9dd56bf85f50bf.r2.dev";
 
 // ------------------------
 // CORS Preflight Handler for OPTIONS
@@ -58,13 +59,16 @@ export async function onRequestPost(context) {
   } catch (err) {
     console.error("Error in /api/lead handler:", err);
     // Return a 500 error, which contact.html will handle
-    return new Response(JSON.stringify({ ok: false, error: "Server error" }), {
-      status: 500,
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-      },
-    });
+    return new Response(
+      JSON.stringify({ ok: false, error: "Server error" }),
+      {
+        status: 500,
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+      }
+    );
   }
 }
 
@@ -82,23 +86,40 @@ async function handleJsonLead(request) {
 async function handleMultipartLead(request, env) {
   const formData = await request.formData();
   const payload = {};
+  const fileNames = [];
   const fileUrls = [];
 
+  // Use form_type (if present) for folder name in R2
+  const folder = formData.get("form_type") || "files";
+
+  // Go through all fields
   for (const [key, value] of formData.entries()) {
     if (value instanceof File) {
+      // It's a file
       if (value.size > 0 && env.R2_BUCKET) {
-        // Use form_type or a default to create a clean folder structure in R2
-        const objectKey = `${payload.form_type || 'files'}/${Date.now()}-${value.name}`;
+        const objectKey = `${folder}/${Date.now()}-${value.name}`;
+
+        // Upload to R2
         await env.R2_BUCKET.put(objectKey, value.stream());
+
+        // Collect info
+        fileNames.push(value.name);
         fileUrls.push(`${FILE_BASE_URL}/${objectKey}`);
       }
     } else {
+      // Normal text field
       payload[key] = value;
     }
   }
 
+  // Add file fields to payload for Make / Google Sheet
+  if (fileNames.length > 0) {
+    payload.file_name = fileNames.join(", ");
+  }
   if (fileUrls.length > 0) {
-    payload.file_urls = fileUrls.join(', ');
+    payload.file_url = fileUrls.join(", ");
+    // (optional) keep old field if you ever used it
+    payload.file_urls = fileUrls.join(", ");
   }
 
   return payload;
