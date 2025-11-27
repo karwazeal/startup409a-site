@@ -805,60 +805,45 @@ valuationRequestForm.addEventListener('submit', async (e) => {
 });
 
         // --- SAMPLE REPORT DOWNLOAD + LEAD CAPTURE (NOW CONNECTED TO BACKEND) ---
-        sampleReportForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
+        sampleReportForm.addEventListener('submit', (e) => {
+    e.preventDefault();
 
-            const nameInput = sampleReportForm.querySelector('input[name="name"]');
-            const emailInput = sampleReportForm.querySelector('input[name="email"]');
+    const nameInput = sampleReportForm.querySelector('input[name="name"]');
+    const emailInput = sampleReportForm.querySelector('input[name="email"]');
 
-            const payload = {
-                form_type: 'sample_report',
-                name: nameInput ? nameInput.value.trim() : '',
-                email: emailInput ? emailInput.value.trim() : '',
-                source_url: window.location.href
-            };
+    const payload = {
+        form_type: 'sample_report',
+        name: nameInput ? nameInput.value.trim() : '',
+        email: emailInput ? emailInput.value.trim() : '',
+        source_url: window.location.href
+    };
 
-            // Send lead to backend (non-blocking for user)
-            try {
-                const response = await fetch('/api/lead', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
+    // 1) Trigger PDF download instantly (still in user click context)
+    const a = document.createElement('a');
+    a.href = PDF_BASE64_DATA; // data:application/pdf;base64,...
+    a.download = 'Sample_409A_Valuation_Report.pdf';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
 
-                const result = await response.json().catch(() => null);
-                if (!response.ok || !result || result.ok !== true) {
-                    console.error('Lead API error (sample_report):', result);
-                }
-            } catch (error) {
-                console.error('Error sending sample report lead:', error);
-            }
+    // 2) UI feedback
+    sampleReportForm.classList.add('hidden');
+    downloadMessage.classList.remove('hidden');
 
-            console.log('Sample report form submitted; Attempting download.');
+    setTimeout(() => {
+        closeModal();
+        sampleReportForm.classList.remove('hidden'); // reset for next use
+    }, 2000);
 
-            // 2. Prepare for file download (using Base64 data)
-            const a = document.createElement('a');
-            // Use the PDF_BASE64_DATA constant
-            a.href = PDF_BASE64_DATA; 
-            a.download = 'Sample_409A_Valuation_Report.pdf';
-
-            // 3. Trigger download
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-
-            // 4. Show success message and close the modal after a delay
-            sampleReportForm.classList.add('hidden');
-            downloadMessage.classList.remove('hidden');
-
-            setTimeout(() => {
-                closeModal();
-                sampleReportForm.classList.remove('hidden'); // Reset form visibility for next use
-            }, 2000); 
-
-            return false; // Prevent form from submitting normally
-        });
-
+    // 3) Send lead to backend in background (no await)
+    fetch('/api/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+    }).catch((error) => {
+        console.error('Error sending sample report lead:', error);
+    });
+});
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
