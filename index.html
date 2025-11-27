@@ -803,9 +803,8 @@ valuationRequestForm.addEventListener('submit', async (e) => {
         closeValuationRequestModal();
     }, 3000);
 });
-
-        // --- SAMPLE REPORT DOWNLOAD + LEAD CAPTURE (NOW CONNECTED TO BACKEND) ---
-        sampleReportForm.addEventListener('submit', (e) => {
+       // --- SAMPLE REPORT DOWNLOAD + LEAD CAPTURE (NOW CONNECTED TO BACKEND) ---
+sampleReportForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
     const nameInput = sampleReportForm.querySelector('input[name="name"]');
@@ -818,38 +817,25 @@ valuationRequestForm.addEventListener('submit', async (e) => {
         source_url: window.location.href
     };
 
-    // 1) Trigger PDF download instantly (using Blob, still in user click context)
-const base64Data = PDF_BASE64_DATA.split(',')[1]; // remove "data:application/pdf;base64,"
-const byteCharacters = atob(base64Data);
-const byteNumbers = new Array(byteCharacters.length);
+    // 1) Trigger PDF download (static file in repo root)
+    const a = document.createElement('a');
+    a.href = 'Sample 409a template.pdf';
+    a.download = 'Sample 409a template.pdf';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
 
-for (let i = 0; i < byteCharacters.length; i++) {
-    byteNumbers[i] = byteCharacters.charCodeAt(i);
-}
-
-const byteArray = new Uint8Array(byteNumbers);
-const blob = new Blob([byteArray], { type: 'application/pdf' });
-const url = URL.createObjectURL(blob);
-
-const a = document.createElement('a');
-a.href = url;
-a.download = 'Sample_409A_Valuation_Report.pdf';
-document.body.appendChild(a);
-a.click();
-document.body.removeChild(a);
-
-// Clean up the temporary URL
-setTimeout(() => URL.revokeObjectURL(url), 1000)
     // 2) UI feedback
     sampleReportForm.classList.add('hidden');
     downloadMessage.classList.remove('hidden');
 
     setTimeout(() => {
         closeModal();
-        sampleReportForm.classList.remove('hidden'); // reset for next use
+        sampleReportForm.classList.remove('hidden'); 
+        downloadMessage.classList.add('hidden');
     }, 2000);
 
-    // 3) Send lead to backend in background (no await)
+    // 3) Send lead to backend (no await)
     fetch('/api/lead', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -857,6 +843,7 @@ setTimeout(() => URL.revokeObjectURL(url), 1000)
     }).catch((error) => {
         console.error('Error sending sample report lead:', error);
     });
+});
 });
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
