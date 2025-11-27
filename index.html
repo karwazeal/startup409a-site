@@ -840,10 +840,12 @@ valuationRequestForm.addEventListener('submit', async (e) => {
 
             console.log('Sample report form submitted; Attempting download.');
 
-// 2. Trigger download of static PDF file hosted in repo root
+// 2. Trigger download from GitHub raw file (always valid)
+const PDF_URL = 'https://raw.githubusercontent.com/karwazeal/startup409a-site/main/Sample%20409a%20template.pdf';
+
 const a = document.createElement('a');
-a.href = 'Sample 409A template.pdf';   // must match the file name in repo
-a.download = 'Sample 409A template.pdf';
+a.href = PDF_URL;
+a.download = 'Sample 409a template.pdf';
 document.body.appendChild(a);
 a.click();
 document.body.removeChild(a);
