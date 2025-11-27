@@ -840,17 +840,14 @@ valuationRequestForm.addEventListener('submit', async (e) => {
 
             console.log('Sample report form submitted; Attempting download.');
 
-            // 2. Prepare for file download (using Base64 data)
-            const a = document.createElement('a');
-            // Use the PDF_BASE64_DATA constant
-            a.href = PDF_BASE64_DATA; 
-            a.download = 'Sample_409A_Valuation_Report.pdf';
-
-            // 3. Trigger download
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-
+// 2. Trigger download of static PDF file hosted in repo root
+const a = document.createElement('a');
+a.href = 'Sample 409A template.pdf';   // must match the file name in repo
+a.download = 'Sample 409A template.pdf';
+document.body.appendChild(a);
+a.click();
+document.body.removeChild(a);
+            
             // 4. Show success message and close the modal after a delay
             sampleReportForm.classList.add('hidden');
             downloadMessage.classList.remove('hidden');
