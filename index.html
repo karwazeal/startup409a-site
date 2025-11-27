@@ -88,7 +88,11 @@
 
                 <!-- CTA Button -->
                 <div class="hidden md:flex items-center space-x-4">
-                                        <a href="contact.html" id="nav-schedule-call" class="px-6 py-2.5 text-sm font-bold rounded-xl text-white bg-primary-blue hover:bg-opacity-90 shadow-cta-glow transition duration-300 transform hover:scale-[1.02]">
+                    <a href="mailto:zeal@valuations409a.com" class="text-sm font-medium text-text-dark hover:text-primary-blue transition duration-150">
+                        Contact
+                    </a>
+                    <!-- CHANGED href from '#' to 'contact.html' -->
+                    <a href="contact.html" id="nav-schedule-call" class="px-6 py-2.5 text-sm font-bold rounded-xl text-white bg-primary-blue hover:bg-opacity-90 shadow-cta-glow transition duration-300 transform hover:scale-[1.02]">
                         Schedule Free Call
                     </a>
                 </div>
@@ -803,53 +807,67 @@ valuationRequestForm.addEventListener('submit', async (e) => {
         closeValuationRequestModal();
     }, 3000);
 });
-       // --- SAMPLE REPORT DOWNLOAD + LEAD CAPTURE (NOW CONNECTED TO BACKEND) ---
-sampleReportForm.addEventListener('submit', (e) => {
-    e.preventDefault();
 
-    const nameInput = sampleReportForm.querySelector('input[name="name"]');
-    const emailInput = sampleReportForm.querySelector('input[name="email"]');
+        // --- SAMPLE REPORT DOWNLOAD + LEAD CAPTURE (NOW CONNECTED TO BACKEND) ---
+        sampleReportForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
 
-    const payload = {
-        form_type: 'sample_report',
-        name: nameInput ? nameInput.value.trim() : '',
-        email: emailInput ? emailInput.value.trim() : '',
-        source_url: window.location.href
-    };
+            const nameInput = sampleReportForm.querySelector('input[name="name"]');
+            const emailInput = sampleReportForm.querySelector('input[name="email"]');
 
-    // 1) Trigger PDF download (static file in repo root)
-    const a = document.createElement('a');
-    a.href = 'Sample 409a template.pdf';
-    a.download = 'Sample 409a template.pdf';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
+            const payload = {
+                form_type: 'sample_report',
+                name: nameInput ? nameInput.value.trim() : '',
+                email: emailInput ? emailInput.value.trim() : '',
+                source_url: window.location.href
+            };
 
-    // 2) UI feedback
-    sampleReportForm.classList.add('hidden');
-    downloadMessage.classList.remove('hidden');
+            // Send lead to backend (non-blocking for user)
+            try {
+                const response = await fetch('/api/lead', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
 
-    setTimeout(() => {
-        closeModal();
-        sampleReportForm.classList.remove('hidden'); 
-        downloadMessage.classList.add('hidden');
-    }, 2000);
+                const result = await response.json().catch(() => null);
+                if (!response.ok || !result || result.ok !== true) {
+                    console.error('Lead API error (sample_report):', result);
+                }
+            } catch (error) {
+                console.error('Error sending sample report lead:', error);
+            }
 
-    // 3) Send lead to backend (no await)
-    fetch('/api/lead', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-    }).catch((error) => {
-        console.error('Error sending sample report lead:', error);
-    });
-});
-});
+            console.log('Sample report form submitted; Attempting download.');
+
+            // 2. Prepare for file download (using Base64 data)
+            const a = document.createElement('a');
+            // Use the PDF_BASE64_DATA constant
+            a.href = PDF_BASE64_DATA; 
+            a.download = 'Sample_409A_Valuation_Report.pdf';
+
+            // 3. Trigger download
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+
+            // 4. Show success message and close the modal after a delay
+            sampleReportForm.classList.add('hidden');
+            downloadMessage.classList.remove('hidden');
+
+            setTimeout(() => {
+                closeModal();
+                sampleReportForm.classList.remove('hidden'); // Reset form visibility for next use
+            }, 2000); 
+
+            return false; // Prevent form from submitting normally
+        });
+
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const href = this.getAttribute('href');
-                if (href !== '#' && href.startsWith('#')) {
+                if (href.length > 1 && href.startsWith('#')) {
                     e.preventDefault();
                     document.querySelector(href).scrollIntoView({
                         behavior: 'smooth'
