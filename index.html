@@ -16,7 +16,7 @@
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-thumb { background-color: #2E5BFF; border-radius: 4px; }
         ::-webkit-scrollbar-track { background-color: #F7F9FC; }
-        
+            
         /* Custom styles for the EngineStart theme */
         .card-hover-effect {
             transition: all 0.3s ease-in-out;
@@ -71,9 +71,10 @@
     <header class="sticky top-0 z-50 bg-white border-b border-background-light shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
-                <!-- Logo/Brand (UPDATED TO IMAGE ONLY) -->
-                <a href="#" class="flex-shrink-0 flex items-center">
-                    <img src="logo.png" alt="Startup409A Logo" class="h-12 w-auto">
+                <!-- Logo/Brand -->
+                <a href="#" class="flex-shrink-0 flex items-center text-2xl font-extrabold text-primary-blue">
+                    <span data-lucide="scale" class="w-7 h-7 mr-2 fill-primary-blue/10 stroke-[1.5]"></span>
+                    409A<span class="text-text-dark ml-1">Valuer</span>
                 </a>
 
                 <!-- Desktop Navigation Links -->
@@ -88,15 +89,10 @@
 
                 <!-- CTA Button -->
                 <div class="hidden md:flex items-center space-x-4">
-                    <a href="mailto:zeal@valuations409a.com" class="text-sm font-medium text-text-dark hover:text-primary-blue transition duration-150">
-                        Contact
-                    </a>
-                    <!-- CHANGED href from '#' to 'contact.html' -->
-                    <a href="contact.html" id="nav-schedule-call" class="px-6 py-2.5 text-sm font-bold rounded-xl text-white bg-primary-blue hover:bg-opacity-90 shadow-cta-glow transition duration-300 transform hover:scale-[1.02]">
-                        Schedule Free Call
-                    </a>
-                </div>
-
+    <a href="contact.html" id="nav-schedule-call" class="px-6 py-2.5 text-sm font-bold rounded-xl text-white bg-primary-blue ...">
+        Schedule Free Call
+    </a>
+</div>
                 <!-- Mobile Menu Button (Hamburger) -->
                 <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-text-dark hover:text-primary-blue">
                     <span data-lucide="menu" class="w-6 h-6"></span>
@@ -581,9 +577,9 @@
     <!-- Footer -->
     <footer class="bg-text-dark py-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-text-grey/70">
-            <!-- UPDATED: Footer Logo Image Instead of Text Brand -->
-            <div class="flex items-center justify-center mb-4">
-                <img src="logowithoutbg.png" alt="Startup409A Logo without bg" class="h-10 w-auto">
+            <div class="flex items-center justify-center text-2xl font-extrabold text-primary-blue mb-4">
+                <span data-lucide="scale" class="w-6 h-6 mr-2 fill-primary-blue/10 stroke-[1.5]"></span>
+                Startup409A
             </div>
             <p class="text-sm">
                 &copy; <span id="current-year"></span> startup409A.com. All rights reserved.
@@ -770,43 +766,45 @@
         });
 
         // --- VALUATION FORM SUBMISSION (NOW CONNECTED TO BACKEND) ---
-valuationRequestForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
+        valuationRequestForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
 
-    // Use multipart form data so the file is actually sent
-    const formData = new FormData(valuationRequestForm);
-    formData.append('form_type', 'valuation_request');
-    formData.append('source_url', window.location.href);
+            const formData = new FormData(valuationRequestForm);
+            const raw = Object.fromEntries(formData.entries());
 
-    try {
-        const response = await fetch('/api/lead', {
-            method: 'POST',
-            body: formData // ❗ no Content-Type header here
+            const payload = {
+                form_type: 'valuation_request',
+                email: raw['contact-email'] || raw['contact_email'] || '',
+                name: raw['founder-name'] || raw['founder_name'] || '',
+                company: raw['company-name'] || raw['company_name'] || '',
+                ...raw,
+                source_url: window.location.href
+            };
+
+            try {
+                const response = await fetch('/api/lead', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json().catch(() => null);
+                if (!response.ok || !result || result.ok !== true) {
+                    console.error('Lead API error (valuation_request):', result);
+                }
+            } catch (error) {
+                console.error('Error sending valuation lead:', error);
+            }
+
+            // Existing UI feedback
+            valuationRequestForm.classList.add('hidden');
+            valuationSuccessMessage.classList.remove('hidden');
+
+            setTimeout(() => {
+                valuationRequestForm.classList.remove('hidden');
+                closeValuationRequestModal();
+            }, 3000);
         });
-
-        // Try to read JSON result, but don't break UI if it fails
-        const text = await response.text().catch(() => '');
-        let result = null;
-        try {
-            result = JSON.parse(text);
-        } catch (_) {}
-
-        if (!response.ok || !result || result.ok !== true) {
-            console.warn('Lead API response (valuation_request):', text);
-        }
-    } catch (error) {
-        console.error('Error sending valuation lead:', error);
-    }
-
-    // Existing UI feedback
-    valuationRequestForm.classList.add('hidden');
-    valuationSuccessMessage.classList.remove('hidden');
-
-    setTimeout(() => {
-        valuationRequestForm.classList.remove('hidden');
-        closeValuationRequestModal();
-    }, 3000);
-});
 
         // --- SAMPLE REPORT DOWNLOAD + LEAD CAPTURE (NOW CONNECTED TO BACKEND) ---
         sampleReportForm.addEventListener('submit', async (e) => {
@@ -863,7 +861,7 @@ valuationRequestForm.addEventListener('submit', async (e) => {
             return false; // Prevent form from submitting normally
         });
 
-        // Smooth scrolling for anchor links
+// Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const href = this.getAttribute('href');
