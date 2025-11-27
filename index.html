@@ -818,14 +818,28 @@ valuationRequestForm.addEventListener('submit', async (e) => {
         source_url: window.location.href
     };
 
-    // 1) Trigger PDF download instantly (still in user click context)
-    const a = document.createElement('a');
-    a.href = PDF_BASE64_DATA; // data:application/pdf;base64,...
-    a.download = 'Sample_409A_Valuation_Report.pdf';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
+    // 1) Trigger PDF download instantly (using Blob, still in user click context)
+const base64Data = PDF_BASE64_DATA.split(',')[1]; // remove "data:application/pdf;base64,"
+const byteCharacters = atob(base64Data);
+const byteNumbers = new Array(byteCharacters.length);
 
+for (let i = 0; i < byteCharacters.length; i++) {
+    byteNumbers[i] = byteCharacters.charCodeAt(i);
+}
+
+const byteArray = new Uint8Array(byteNumbers);
+const blob = new Blob([byteArray], { type: 'application/pdf' });
+const url = URL.createObjectURL(blob);
+
+const a = document.createElement('a');
+a.href = url;
+a.download = 'Sample_409A_Valuation_Report.pdf';
+document.body.appendChild(a);
+a.click();
+document.body.removeChild(a);
+
+// Clean up the temporary URL
+setTimeout(() => URL.revokeObjectURL(url), 1000)
     // 2) UI feedback
     sampleReportForm.classList.add('hidden');
     downloadMessage.classList.remove('hidden');
