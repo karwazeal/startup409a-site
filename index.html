@@ -1024,5 +1024,69 @@ document.body.removeChild(a);
             applyStyle(sampleReportCta, 'secondary');
         });
     </script>
+<!-- Exit Intent Popup -->
+<div id="exit-popup" class="fixed inset-0 z-50 hidden">
+  <div id="exit-popup-overlay" class="absolute inset-0 bg-black/40"></div>
+
+  <div class="relative max-w-md mx-auto mt-24 bg-white rounded-2xl shadow-2xl border border-gray-200 p-6">
+    <button id="exit-popup-close"
+            class="absolute top-3 right-3 text-gray-400 hover:text-gray-600 text-xl leading-none">
+      ×
+    </button>
+
+    <p class="text-xs font-semibold uppercase tracking-wide text-primary-blue mb-1">
+      Before you go
+    </p>
+    <h3 class="text-2xl font-bold text-gray-900 mb-2">
+      Get a quick 409A feasibility check.
+    </h3>
+    <p class="text-sm text-gray-600 mb-5">
+      Share your cap table and funding details — we confirm timelines, pricing, and what documents you’ll need.
+    </p>
+
+    <div class="flex flex-col sm:flex-row gap-3">
+      <a href="contact.html"
+         class="flex-1 inline-flex items-center justify-center px-4 py-3 rounded-xl bg-primary-blue text-white text-sm font-semibold hover:bg-opacity-90">
+        📅 Schedule Free Consultation
+      </a>
+      <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=zeal@startup409a.com"
+         target="_blank"
+         class="flex-1 inline-flex items-center justify-center px-4 py-3 rounded-xl border border-primary-blue text-primary-blue text-sm font-semibold hover:bg-primary-blue hover:text-white">
+        💬 Email Zeal
+      </a>
+    </div>
+  </div>
+</div>
+<script>
+  (function () {
+    var popup = document.getElementById('exit-popup');
+    if (!popup) return;
+
+    var overlay = document.getElementById('exit-popup-overlay');
+    var closeBtn = document.getElementById('exit-popup-close');
+    var hasShown = false;
+
+    function showPopup() {
+      if (hasShown) return;
+      hasShown = true;
+      popup.classList.remove('hidden');
+    }
+
+    function hidePopup() {
+      popup.classList.add('hidden');
+    }
+
+    document.addEventListener('mouseleave', function (e) {
+      if (window.innerWidth < 768) return;
+      if (e.clientY <= 0) {
+        showPopup();
+      }
+    });
+
+    if (overlay) overlay.addEventListener('click', hidePopup);
+    if (closeBtn) closeBtn.addEventListener('click', hidePopup);
+  })();
+</script>
+
 </body>
 </html>
