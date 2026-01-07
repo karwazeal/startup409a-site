@@ -112,10 +112,8 @@
                     body: JSON.stringify(payload)
                 });
 
-                const result = await response.json().catch(() => null);
-
-                if (!response.ok || !result || result.ok !== true) {
-                    throw new Error('API error');
+               if (!response.ok) {
+  throw new Error('API error');
                 }
 
                 statusMessage.textContent = 'Thank you! Your message has been sent successfully.';
