@@ -1113,6 +1113,47 @@ document.body.removeChild(a);
     if (closeBtn) closeBtn.addEventListener('click', hidePopup);
   })();
 </script>
+<script>
+  const SAMPLE_WEBHOOK = "https://hook.us2.make.com/j3j54614rsdst1v9err949tm7t187qhz";
+
+  const sampleForm = document.getElementById("sample-report-form");
+
+  if (sampleForm) {
+    sampleForm.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const name = sampleForm.elements["name"].value.trim();
+      const email = sampleForm.elements["email"].value.trim();
+
+      try {
+        const res = await fetch(SAMPLE_WEBHOOK, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            source: "sample_report_download",
+            name,
+            email,
+            page: window.location.href,
+            timestamp: new Date().toISOString()
+          })
+        });
+
+        if (!res.ok) throw new Error("Webhook failed");
+
+        const a = document.createElement("a");
+        a.href = "/Sample%20409a%20template.pdf";
+        a.download = "Sample-409A-Report.pdf";
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+
+        sampleForm.reset();
+      } catch (err) {
+        alert("Submission failed. Please try again.");
+      }
+    });
+  }
+</script>
 
 </body>
 </html>
