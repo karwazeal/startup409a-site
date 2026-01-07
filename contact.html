@@ -104,7 +104,9 @@
             };
 
             try {
-                const response = await fetch('/api/lead', {
+                const response = await fetch(
+  "https://hook.us2.make.com/6rq62flwa4p5wwsdwiqqu2gvkkiwqejq",
+  {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)
