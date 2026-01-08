@@ -1169,5 +1169,41 @@ document.body.removeChild(a);
     });
   })();
 </script>
+<script>
+  (function () {
+    const sectionIds = [
+      "why-us",
+      "valuation101",
+      "process",
+      "pricing",
+      "clients",
+      "expertise",
+      "contact"
+    ];
+
+    const sections = sectionIds
+      .map(id => document.getElementById(id))
+      .filter(Boolean);
+
+    if (!sections.length) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      // find the most visible entry
+      const visible = entries
+        .filter(e => e.isIntersecting)
+        .sort((a,b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+      if (!visible) return;
+
+      const id = visible.target.id;
+      if (id && location.hash !== `#${id}`) {
+        history.replaceState(null, "", `#${id}`);
+      }
+    }, { threshold: [0.4, 0.6, 0.8] });
+
+    sections.forEach(s => observer.observe(s));
+  })();
+</script>
+
 </body>
 </html>
