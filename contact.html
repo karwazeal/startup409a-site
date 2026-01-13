@@ -81,8 +81,13 @@
 
     </div>
 
-    <script>
-        lucide.createIcons();
+   <script>
+  lucide.createIcons();
+
+  const WEBHOOK_URL = "https://hook.us2.make.com/6rq62flwa4p5wwsdwiqqu2gvkkiwqejq";
+
+  document.getElementById('contactForm').addEventListener('submit', async function(event) {
+
 
         document.getElementById('contactForm').addEventListener('submit', async function(event) {
             event.preventDefault();
@@ -102,6 +107,7 @@
                 subject: form.subject.value.trim(),
                 message: form.message.value.trim(),
                 source_url: window.location.href
+                turnstile_token: turnstileToken
             };
 
             try {
