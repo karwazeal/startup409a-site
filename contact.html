@@ -7,6 +7,7 @@
     <title>Contact Us - Get In Touch</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
         body { font-family: 'Inter', sans-serif; background-color: #f7f9fc; }
@@ -135,7 +136,14 @@
         body: JSON.stringify(payload)
       });
 
-      if (!response.ok) throw new Error('Webhook error: ' + response.status);
+      if (!response.ok) {
+  throw new Error('Webhook error: ' + response.status);
+}
+
+// ✅ fire conversion only on success
+gtag('event', 'conversion', {
+  'send_to': 'AW-17832648392/a9UJCNjdudcbEMi9ordC'
+});;
 
       statusMessage.textContent = 'Thank you! Your message has been sent successfully.';
       statusMessage.className = 'p-3 text-sm rounded-lg bg-green-100 text-green-700';
