@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Privacy Policy | Startup409a.com</title>
+  <meta name="description" content="Privacy Policy for Startup409a.com – how we collect, use, and protect information." />
+  <meta name="robots" content="index,follow" />
+
+  <style>
+    :root {
+      --bg: #f7f9fc;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --border: #e2e8f0;
+      --link: #1d4ed8;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+    header {
+      padding: 28px 16px;
+      border-bottom: 1px solid var(--border);
+      background: #fff;
+    }
+    .container {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+    .brand {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .brand h1 {
+      margin: 0;
+      font-size: 22px;
+      letter-spacing: -0.2px;
+    }
+    .brand a {
+      color: var(--link);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .meta {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    main {
+      padding: 22px 0 40px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px 18px;
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+    }
+    h2 {
+      margin: 22px 0 8px;
+      font-size: 18px;
+      letter-spacing: -0.2px;
+    }
+    h2:first-child { margin-top: 0; }
+    p { margin: 10px 0; color: var(--text); }
+    .muted { color: var(--muted); }
+    a { color: var(--link); }
+    footer {
+      padding: 18px 16px;
+      border-top: 1px solid var(--border);
+      background: #fff;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .footer-links a { margin-right: 14px; text-decoration: none; }
+    .notice {
+      margin-top: 14px;
+      padding: 12px 12px;
+      border-radius: 12px;
+      background: #f1f5f9;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <div class="brand">
+        <h1>Privacy Policy</h1>
+        <a href="/" aria-label="Go to homepage">startup409a.com</a>
+      </div>
+      <div class="meta">Last Updated: <strong id="lastUpdated">16 Jan 2026</strong></div>
+      <div class="notice">
+        This policy explains how Startup409a.com collects, uses, and protects information shared through our website and lead forms.
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="card">
+
+        <h2>1. Introduction</h2>
+        <p>
+          Startup409a.com (“we”, “our”, “us”) respects your privacy and is committed to protecting personal, professional,
+          and business information shared with us. This Privacy Policy describes how we collect, use, store, disclose,
+          and safeguard information when you visit our website or engage with our valuation and related services.
+        </p>
+        <p class="muted">
+          By using this website, you agree to this Privacy Policy. If you do not agree, please discontinue use of the website.
+        </p>
+
+        <h2>2. Information We Collect</h2>
+        <p>
+          We may collect information you provide voluntarily, such as your name, work email, phone number, company name,
+          role/designation, jurisdiction, valuation purpose, and any documents or inputs required for valuation services
+          (including capitalization details, ESOP details, financial statements, and related business information).
+        </p>
+        <p>
+          We may also collect technical information automatically, such as IP address, device and browser information,
+          pages visited, time spent, referral sources, and interactions through cookies and similar technologies.
+        </p>
+
+        <h2>3. How We Use Information</h2>
+        <p>
+          We use collected information only for legitimate business and professional purposes, including providing 409A
+          valuation and related advisory services, responding to inquiries, preparing valuation deliverables, internal
+          quality checks, security, fraud prevention, and legal/regulatory compliance.
+        </p>
+        <p>
+          We do not sell or rent personal or business information to third parties for marketing.
+        </p>
+
+        <h2>4. Confidentiality of Financial & Valuation Data</h2>
+        <p>
+          We understand valuation data is sensitive. Financial, cap table, ESOP, and strategic information is treated as
+          confidential and used solely to deliver professional services. Access is limited to authorized team members and
+          service providers who require it to perform the engagement.
+        </p>
+
+        <h2>5. Cookies & Analytics</h2>
+        <p>
+          We may use cookies, pixels, and analytics tools to understand website performance and improve user experience.
+          You can manage cookies through your browser settings. Disabling cookies may affect site functionality.
+        </p>
+
+        <h2>6. Third-Party Services</h2>
+        <p>
+          We may use trusted third-party providers for hosting, analytics, customer communication, CRM, payment processing,
+          or marketing tools. These providers are required to protect information and process it only as needed to deliver
+          their services to us.
+        </p>
+        <p>
+          Our website may contain links to third-party sites. We are not responsible for the privacy practices of external sites.
+        </p>
+
+        <h2>7. Data Retention</h2>
+        <p>
+          We retain information only as long as needed to fulfill the purposes described in this policy, including legal,
+          regulatory, professional, and dispute-resolution requirements. Some information may be securely archived if
+          required by law or professional standards.
+        </p>
+
+        <h2>8. Data Security</h2>
+        <p>
+          We use reasonable administrative, technical, and physical safeguards to protect information. However, no internet
+          transmission or storage method can be guaranteed 100% secure, and absolute security cannot be guaranteed.
+        </p>
+
+        <h2>9. Your Rights</h2>
+        <p>
+          Depending on applicable laws, you may request access, correction, or deletion of your personal information, or
+          request restrictions on processing. We may retain certain data where required for compliance or professional obligations.
+        </p>
+
+        <h2>10. Children’s Privacy</h2>
+        <p>
+          This website is not intended for individuals under 18, and we do not knowingly collect personal information from them.
+        </p>
+
+        <h2>11. International Processing</h2>
+        <p>
+          Because we may serve clients globally, information may be processed and stored in different jurisdictions, subject to
+          reasonable safeguards.
+        </p>
+
+        <h2>12. Updates to This Policy</h2>
+        <p>
+          We may update this Privacy Policy from time to time. Updates will be posted on this page with a revised “Last Updated” date.
+        </p>
+
+        <h2>13. Contact Us</h2>
+        <p>
+          If you have questions or requests regarding this policy, contact us at:
+          <br />
+          <strong>Email:</strong> <a href="mailto:info@startup409a.com">info@startup409a.com</a>
+        </p>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/privacy-policy.html" aria-current="page">Privacy Policy</a>
+        <!-- Optional: <a href="/terms.html">Terms</a> -->
+      </div>
+      <div class="muted">© <span id="year"></span> Startup409a.com. All rights reserved.</div>
+    </div>
+
+    <script>
+      // Auto-fill footer year
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      // Optional: set "Last Updated" dynamically to today's date (uncomment if desired)
+      // document.getElementById("lastUpdated").textContent =
+      //   new Date().toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" });
+    </script>
+  </footer>
+</body>
+</html>
