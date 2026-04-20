@@ -938,13 +938,15 @@ valuationRequestForm.addEventListener('submit', async (e) => {
             result = JSON.parse(text);
         } catch (_) {}
 
-        if (!response.ok || !result || result.ok !== true) {
-            console.warn('Lead API response (valuation_request):', text);
-        }
-    } catch (error) {
-        console.error('Error sending valuation lead:', error);
-    }
-
+     if (!response.ok || !result || result.ok !== true) {
+    console.warn('Lead API response (valuation_request):', text);
+} else {
+    gtag('event', 'conversion', {
+        'send_to': 'AW-18106017234/Q-BYCIi2uJ8cENLLz7lD',
+        'value': 1.0,
+        'currency': 'USD'
+    });
+}
     // Existing UI feedback
     valuationRequestForm.classList.add('hidden');
     valuationSuccessMessage.classList.remove('hidden');
