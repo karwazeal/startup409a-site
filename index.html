@@ -1225,6 +1225,41 @@ document.body.removeChild(a);
     sections.forEach(s => observer.observe(s));
   })();
 </script>
+const valuationForm = document.getElementById('valuation-request-form');
 
+valuationForm.addEventListener('submit', async function(e) {
+    e.preventDefault(); // 🔥 stop default redirect
+
+    const formData = new FormData(valuationForm);
+
+    try {
+        const response = await fetch(valuationForm.action, {
+            method: 'POST',
+            body: formData
+        });
+
+        if (response.ok) {
+
+            // ✅ Show success message
+            document.getElementById('valuation-success-message').classList.remove('hidden');
+
+            // 🔥 FIRE GOOGLE CONVERSION
+            gtag('event', 'conversion', {
+                'send_to': 'AW-18106017234/Q-BYCIi2uJ8cENLLz7lD',
+                'value': 1.0,
+                'currency': 'USD'
+            });
+
+            // Optional: reset form
+            valuationForm.reset();
+
+        } else {
+            alert('Something went wrong. Please try again.');
+        }
+
+    } catch (error) {
+        alert('Error submitting form.');
+    }
+});
 </body>
 </html>
