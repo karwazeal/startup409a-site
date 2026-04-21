@@ -889,31 +889,8 @@ mobileMenuButton.addEventListener('click', () => {
                 closeModal();
             }
         });
-// --- ADD THIS BELOW ---
 
-// Open valuation modal
-startValuationCta.addEventListener('click', (e) => {
-    e.preventDefault();
-    valuationFormModal.classList.remove('hidden');
-    document.body.classList.add('overflow-hidden');
-});
-
-// Close valuation modal
-function closeValuationModal() {
-    valuationFormModal.classList.add('hidden');
-    document.body.classList.remove('overflow-hidden');
-}
-
-// Close on X button
-closeValuationModalBtn.addEventListener('click', closeValuationModal);
-
-// Close when clicking outside
-valuationFormModal.addEventListener('click', (e) => {
-    if (e.target === valuationFormModal) {
-        closeValuationModal();
-    }
-});
-        // --- NEW MODAL LOGIC FOR VALUATION REQUEST (ADDED) ---
+      // --- NEW MODAL LOGIC FOR VALUATION REQUEST (ADDED) ---
         const openValuationModal = (e) => {
             e.preventDefault(); // Stop the link from navigating
             valuationFormModal.classList.remove('hidden');
@@ -1249,31 +1226,37 @@ document.body.removeChild(a);
 
     sections.forEach(s => observer.observe(s));
   })();
+  <script>
+   // ALL your JS here
+
+   const valuationForm = document.getElementById('valuation-request-form');
+
+   valuationForm.addEventListener('submit', async function(e) {
+       e.preventDefault();
+
+       const formData = new FormData(valuationForm);
+
+       try {
+           const response = await fetch(valuationForm.action, {
+               method: 'POST',
+               body: formData
+           });
+
+           if (response.ok) {
+               document.getElementById('valuation-success-message').classList.remove('hidden');
+
+               gtag('event', 'conversion', {
+                   send_to: 'AW-18106017234/Q-BYCIi2uJ8CENLLz71D',
+                   value: 1.0
+               });
+           }
+       } catch (error) {
+           console.error(error);
+       }
+   });
+
 </script>
-const valuationForm = document.getElementById('valuation-request-form');
 
-valuationForm.addEventListener('submit', async function(e) {
-    e.preventDefault(); // 🔥 stop default redirect
-
-    const formData = new FormData(valuationForm);
-
-    try {
-        const response = await fetch(valuationForm.action, {
-            method: 'POST',
-            body: formData
-        });
-
-        if (response.ok) {
-
-            // ✅ Show success message
-            document.getElementById('valuation-success-message').classList.remove('hidden');
-
-            // 🔥 FIRE GOOGLE CONVERSION
-            gtag('event', 'conversion', {
-                'send_to': 'AW-18106017234/Q-BYCIi2uJ8cENLLz7lD',
-                'value': 1.0,
-                'currency': 'USD'
-            });
 
             // Optional: reset form
             valuationForm.reset();
