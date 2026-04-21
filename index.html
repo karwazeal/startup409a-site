@@ -1178,96 +1178,193 @@ document.body.removeChild(a);
   }
 </script>
 <script>
-  (function () {
-    const params = new URLSearchParams(window.location.search);
-    const section = params.get("section");
+  lucide.createIcons();
 
-    if (!section) return;
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const startValuationCta = document.getElementById('start-valuation-cta');
+  const sampleReportCta = document.getElementById('sample-report-cta');
+  const modal = document.getElementById('sample-report-modal');
+  const closeModalButton = document.getElementById('close-modal');
+  const sampleReportForm = document.getElementById('sample-report-form');
+  const downloadMessage = document.getElementById('download-message');
 
-    window.addEventListener("load", () => {
-      const el = document.getElementById(section);
-      if (el) {
-        el.scrollIntoView({ behavior: "smooth", block: "start" });
+  const valuationFormModal = document.getElementById('valuation-form-modal');
+  const closeValuationModalBtn = document.getElementById('close-valuation-modal');
+  const valuationRequestForm = document.getElementById('valuation-request-form');
+  const valuationSuccessMessage = document.getElementById('valuation-success-message');
+
+  if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
+
+  function openModal() {
+    modal.classList.remove('hidden');
+    document.body.classList.add('overflow-hidden');
+    downloadMessage.classList.add('hidden');
+  }
+
+  function closeModal() {
+    modal.classList.add('hidden');
+    document.body.classList.remove('overflow-hidden');
+    sampleReportForm.reset();
+    downloadMessage.classList.add('hidden');
+  }
+
+  function openValuationModal(e) {
+    e.preventDefault();
+    valuationFormModal.classList.remove('hidden');
+    document.body.classList.add('overflow-hidden');
+  }
+
+  function closeValuationRequestModal() {
+    valuationFormModal.classList.add('hidden');
+    document.body.classList.remove('overflow-hidden');
+    valuationRequestForm.reset();
+    valuationSuccessMessage.classList.add('hidden');
+    valuationRequestForm.classList.remove('hidden');
+  }
+
+  if (sampleReportCta) {
+    sampleReportCta.addEventListener('click', openModal);
+  }
+
+  if (closeModalButton) {
+    closeModalButton.addEventListener('click', closeModal);
+  }
+
+  if (modal) {
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+  }
+
+  if (startValuationCta) {
+    startValuationCta.addEventListener('click', openValuationModal);
+  }
+
+  if (closeValuationModalBtn) {
+    closeValuationModalBtn.addEventListener('click', closeValuationRequestModal);
+  }
+
+  if (valuationFormModal) {
+    valuationFormModal.addEventListener('click', (e) => {
+      if (e.target === valuationFormModal) closeValuationRequestModal();
+    });
+  }
+
+  if (valuationRequestForm) {
+    valuationRequestForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(valuationRequestForm);
+      formData.append('form_type', 'valuation_request');
+      formData.append('source_url', window.location.href);
+
+      try {
+        const response = await fetch('/api/lead', {
+          method: 'POST',
+          body: formData
+        });
+
+        if (!response.ok) {
+          throw new Error('Valuation form submission failed');
+        }
+
+        gtag('event', 'conversion', {
+          'send_to': 'AW-18106017234/Q-BYCIi2uJ8cENLLz7lD',
+          'value': 1.0,
+          'currency': 'USD'
+        });
+
+        valuationRequestForm.classList.add('hidden');
+        valuationSuccessMessage.classList.remove('hidden');
+
+        setTimeout(() => {
+          closeValuationRequestModal();
+        }, 3000);
+
+      } catch (error) {
+        console.error(error);
+        alert('Error submitting form.');
       }
     });
-  })();
-</script>
-<script>
-  (function () {
-    const sectionIds = [
-      "why-us",
-      "valuation101",
-      "process",
-      "pricing",
-      "clients",
-      "expertise",
-      "contact"
-    ];
+  }
 
-    const sections = sectionIds
-      .map(id => document.getElementById(id))
-      .filter(Boolean);
+  const SAMPLE_WEBHOOK = '/api/lead';
 
-    if (!sections.length) return;
+  if (sampleReportForm) {
+    sampleReportForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
 
+      const name = sampleReportForm.elements['name'].value.trim();
+      const email = sampleReportForm.elements['email'].value.trim();
+
+      try {
+        const res = await fetch(SAMPLE_WEBHOOK, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            form_type: 'sample_report',
+            name,
+            email,
+            source_url: window.location.href
+          })
+        });
+
+        if (!res.ok) throw new Error('Sample report submission failed');
+
+        const a = document.createElement('a');
+        a.href = '/Sample%20409a%20template.pdf';
+        a.download = 'Sample-409A-Report.pdf';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+
+        downloadMessage.classList.remove('hidden');
+        sampleReportForm.reset();
+
+      } catch (err) {
+        console.error(err);
+        alert('Submission failed. Please try again.');
+      }
+    });
+  }
+
+  const params = new URLSearchParams(window.location.search);
+  const section = params.get('section');
+
+  if (section) {
+    window.addEventListener('load', () => {
+      const el = document.getElementById(section);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  }
+
+  const sectionIds = ['features', 'valuation-101', 'process', 'pricing', 'testimonials', 'about'];
+  const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
+
+  if (sections.length && 'IntersectionObserver' in window) {
     const observer = new IntersectionObserver((entries) => {
-      // find the most visible entry
       const visible = entries
         .filter(e => e.isIntersecting)
-        .sort((a,b) => b.intersectionRatio - a.intersectionRatio)[0];
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
 
       if (!visible) return;
 
       const id = visible.target.id;
       if (id && location.hash !== `#${id}`) {
-        history.replaceState(null, "", `#${id}`);
+        history.replaceState(null, '', `#${id}`);
       }
     }, { threshold: [0.4, 0.6, 0.8] });
 
     sections.forEach(s => observer.observe(s));
-  })();
-  <script>
-   // ALL your JS here
-
-   const valuationForm = document.getElementById('valuation-request-form');
-
-   valuationForm.addEventListener('submit', async function(e) {
-       e.preventDefault();
-
-       const formData = new FormData(valuationForm);
-
-       try {
-           const response = await fetch(valuationForm.action, {
-               method: 'POST',
-               body: formData
-           });
-
-           if (response.ok) {
-               document.getElementById('valuation-success-message').classList.remove('hidden');
-
-               gtag('event', 'conversion', {
-                   send_to: 'AW-18106017234/Q-BYCIi2uJ8CENLLz71D',
-                   value: 1.0
-               });
-           }
-       } catch (error) {
-           console.error(error);
-       }
-   });
-
+  }
 </script>
 
-
-            // Optional: reset form
-            valuationForm.reset();
-
-        } else {
-            alert('Something went wrong. Please try again.');
-        }
-
-    } catch (error) {
-        alert('Error submitting form.');
-    }
-});
 </body>
 </html>
