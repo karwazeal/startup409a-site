@@ -889,7 +889,30 @@ mobileMenuButton.addEventListener('click', () => {
                 closeModal();
             }
         });
+// --- ADD THIS BELOW ---
 
+// Open valuation modal
+startValuationCta.addEventListener('click', (e) => {
+    e.preventDefault();
+    valuationFormModal.classList.remove('hidden');
+    document.body.classList.add('overflow-hidden');
+});
+
+// Close valuation modal
+function closeValuationModal() {
+    valuationFormModal.classList.add('hidden');
+    document.body.classList.remove('overflow-hidden');
+}
+
+// Close on X button
+closeValuationModalBtn.addEventListener('click', closeValuationModal);
+
+// Close when clicking outside
+valuationFormModal.addEventListener('click', (e) => {
+    if (e.target === valuationFormModal) {
+        closeValuationModal();
+    }
+});
         // --- NEW MODAL LOGIC FOR VALUATION REQUEST (ADDED) ---
         const openValuationModal = (e) => {
             e.preventDefault(); // Stop the link from navigating
