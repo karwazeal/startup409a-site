@@ -903,19 +903,7 @@ mobileMenuButton.addEventListener('click', () => {
             valuationSuccessMessage.classList.add('hidden');
         };
 
-        // Event listeners for the new Valuation Modal
-        // The startValuationCta (Start Valuation Process) still opens the modal
-        startValuationCta.addEventListener('click', openValuationModal);
-        closeValuationModalBtn.addEventListener('click', closeValuationRequestModal);
-
-        // Close modal when clicking outside the content
-        valuationFormModal.addEventListener('click', (e) => {
-            if (e.target === valuationFormModal) {
-                closeValuationRequestModal();
-            }
-        });
-
-        // --- VALUATION FORM SUBMISSION (NOW CONNECTED TO BACKEND) ---
+               // --- VALUATION FORM SUBMISSION (NOW CONNECTED TO BACKEND) ---
 valuationRequestForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
